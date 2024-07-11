@@ -1,0 +1,21 @@
+((* extends "_target.tex" *))
+
+
+((* block description -*))
+  The ((( target.name ))) is a web application that ((( lipsum(1, False) ))).
+((*- endblock description *))
+
+
+((* block assignment -*))
+    The penetration test focused on identifying vulnerabilities which can be used by a malicious attacker to access, disrupt, manipulate and/or affect the availability of sensitive data or resources.
+((*- endblock assignment *))
+
+
+((* block limitations -*))
+((*- if target.waf_present and not target.waf_whitelisted *))
+  \subsection{Limitations}
+
+  The target was protected by WAF but our IP was not whitelisted during the penetration test.
+  This may have a significant impact on the results.
+((* endif -*))
+((*- endblock limitations *))

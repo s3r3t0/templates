@@ -1,0 +1,9 @@
+((* extends "_finding_group.tex" *))
+
+((* block finding_details *))
+  Application or host
+    ((* for url in target.urls *))
+      & \nolinkurl{((( url )))}  \\
+    ((*- endfor *))
+  Risk & ((( finding_group.risks[version].value | capitalize ))) \\
+((* endblock finding_details *))

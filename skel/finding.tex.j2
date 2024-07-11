@@ -1,0 +1,24 @@
+\documentclass{sereto}
+
+\title{%
+    ((( id | tex )))
+    --
+    ((( name | tex )))
+}
+
+\subtitle{%
+    Penetration test report
+    --
+    ((( report_version | tex )))
+}
+
+\author{%
+    ((( people | selectattr("type.value", "==", "author") | join(", ", "name") | tex )))
+}
+
+\begin{document}
+  \maketitle
+
+  ((* include target.uname + "/findings/" + finding_group.uname + ".tex.j2" *))
+
+\end{document}

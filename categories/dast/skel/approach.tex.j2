@@ -1,0 +1,16 @@
+\subsection{Dynamic application test ((* if target.authentication and target.credentials_provided -*)) with ((*- else *)) without ((*- endif *)) credentials}
+
+With a dynamic web
+((*- if api *)) service (API)
+((*- else *)) application
+((*- endif *))
+test, an attack by a malicious attacker is simulated.
+In this case the target
+((*- if target.authentication *)) supports authentication
+  ((*- if target.credentials_provided *)) and the credentials were provided.
+  ((*- else *)) but the credentials were not provided.
+  ((*- endif *))
+((*- else *)) does not support authentication.
+((*- endif *))
+
+((( lipsum(1, False) )))

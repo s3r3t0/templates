@@ -1,0 +1,14 @@
+\subsection{(((finding_group.name)))}
+
+\begin{tcolorbox}
+\begin{longtable}{ r l }
+  ((* block finding_details required *))((* endblock finding_details *))
+\end{longtable}
+\end{tcolorbox}
+
+((* for finding in finding_group.findings *))
+  ((* if finding_group.findings | length > 1 *))
+    \subsubsection{((( finding.name )))}
+  ((* endif *))
+    \input{((( finding.path.relative_to(report_path) )))/((( finding.path_name )))((( version.path_suffix )))}
+((* endfor *))
