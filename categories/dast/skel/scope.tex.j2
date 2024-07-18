@@ -7,7 +7,7 @@ The scope of the penetration test was described in:
     \item \emph{((( clickpath | tex )))} document
   ((*- endif *))
   ((* if api -*))
-    \item \emph{((( api | tex )))} \acs{api} collection
+    \item \emph{((( api | tex )))} \ac{api} collection
   ((*- endif *))
 \end{itemize}
 ((* else -*))
@@ -18,23 +18,23 @@ The scope of the penetration test was limited to the scope given below.
   \toprule
     Name of the target & ((( target.name ))) \\
     ((* if target.urls | length -*))
-    Target URLs
+    Target \acp{url}
         ((*- for url in target.urls *))
         & \nolinkurl{((( url | tex )))} \\
         ((* endfor *))
     ((*- endif *))
     ((* if target.dst_ips_dynamic -*))
-    Target IPs & Dynamic ( (((- target.dst_ips_dynamic_details -))) ) \\
+    Target \acp{ip} & Dynamic ( (((- target.dst_ips_dynamic_details -))) ) \\
     ((* endif -*))
     ((* if target.dst_ips | length -*))
-    Target IPs
+    Target \acp{ip}
         ((* for ip in target.dst_ips *))
         & \nolinkurl{((( ip | tex )))} \\
         ((* endfor *))
     ((*- endif *))
     Environment & ((( target.environment | capitalize ))) \\
     ((* if target.src_ips | length -*))
-    Pentester's IPs
+    Pentester's \acp{ip}
         ((* for ip in target.src_ips *))
         & \nolinkurl{((( ip | tex )))} \\
         ((* endfor *))
@@ -47,10 +47,10 @@ The target has the following defenses in place:
 \begin{longtable}{ r l }
   \toprule
     Target accessible from the Internet & ((( (not target.internal) | yesno("Yes,No") ))) \\
-    Access to target protected by IP whitelist & ((( target.ip_filtering | yesno("Yes,No") ))) \\
-    Tester's IP whitelisted & ((( target.ip_allowed | yesno("Yes,No") ))) \\
-    Request input filtered by WAF & ((( target.waf_present | yesno("Yes,No") ))) \\
-    Tester's IP whitelisted & ((( target.waf_whitelisted | yesno("Yes,No") ))) \\
+    Access to target protected by \ac{ip} whitelist & ((( target.ip_filtering | yesno("Yes,No") ))) \\
+    Tester's \ac{ip} whitelisted & ((( target.ip_allowed | yesno("Yes,No") ))) \\
+    Request input filtered by \ac{waf} & ((( target.waf_present | yesno("Yes,No") ))) \\
+    Tester's \ac{ip} whitelisted & ((( target.waf_whitelisted | yesno("Yes,No") ))) \\
     Access to target protected by authentication & ((( target.authentication | yesno("Yes,No") ))) \\
     Credentials provided & ((( target.credentials_provided | yesno("Yes,No") ))) \\
   \bottomrule

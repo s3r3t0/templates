@@ -36,6 +36,14 @@
 \RequirePackage{tcolorbox}
 % header and footer
 \RequirePackage[headsepline,footsepline]{scrlayer-scrpage}
+% glossaries
+\RequirePackage[
+    acronym,
+    nomain,
+    shortcuts,
+    nogroupskip,
+    numberedsection=nolabel
+]{glossaries}
 
 % set spacing
 \setstretch{1.2}
@@ -154,6 +162,13 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
 \setlength{\emergencystretch}{3em}
+
+% prepare acronyms
+\setglossarystyle{alttree}
+\setacronymstyle{long-short}
+\makenoidxglossaries
+\include{glossary}
+\glsfindwidesttoplevelname
 
 % Front matter
 
