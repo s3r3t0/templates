@@ -1,0 +1,81 @@
+% ((( MANUAL_EDIT_WARNING )))
+
+\documentclass{sereto}
+
+\title{%
+    ((( id | tex )))
+    --
+    ((( name | tex )))
+}
+
+\subtitle{%
+    Statement of Work
+    --
+    ((( report_version | tex )))
+}
+
+\author{%
+    ((( people | selectattr("type.value", "==", "author") | join(", ", "name") | tex )))
+}
+
+\begin{document}
+
+    \makefront
+  
+    \chapter{Management summary}
+
+    The ((( people | selectattr("type.value", "==", "requestor") | join(", ", "name") | tex ))) are engaging the ((( people | selectattr("type.value", "==", "author") | join(", ", "name") | tex ))) to perform a penetration test \enquote{((( name | tex )))} (reference number ((( id | tex )))) as:
+
+    \begin{itemize}
+    ((* for target in targets *))
+      \item ((( target.category | upper | tex ))) test of the \hyperref[((( target.uname )))]{((( target.name | tex )))} target
+    ((* endfor *))
+    \end{itemize}
+
+    The Penetration Testing team will perform the engagement in the following timeframe:
+
+    \begin{itemize}
+    ((* for date in dates | selectattr("type.value", "==", "pentest_ongoing") *))
+      ((* if date.date.end *))
+        \item from ((( date.date.start | tex ))) to ((( date.date.end | tex )))
+      ((* else *))
+        \item during ((( date.date | tex )))
+      ((* endif *))
+    ((* endfor *))
+    \end{itemize}
+
+  ((*- for target in targets *))
+    \chapter{((( target.name )))}
+    \label{((( target.uname )))}
+
+    \section{Assigment}
+
+    This section describes the details of the assignment for the ((( target.name ))) target.
+
+    ((* include target.uname + "/scope" + version.path_suffix + ".tex.j2" *))
+
+    ((* include target.uname + "/approach" + version.path_suffix + ".tex.j2" *))
+
+  ((* endfor -*))
+
+  \chapter{Prerequisites}
+
+  The prerequisites mentioned in this chapter are required for the successful completion of the penetration test.
+
+  \section{Access}
+
+  ((( lipsum(1, False) )))
+
+  \section{Documentation}
+
+  ((( lipsum(1, False) )))
+
+  \section{Environment}
+
+  ((( lipsum(1, False) )))
+
+  \section{Code Freeze}
+
+  ((( lipsum(1, False) )))
+
+\end{document}
