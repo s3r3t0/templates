@@ -1,6 +1,11 @@
 ((* extends "base_document.tex.j2" *))
 
 
+((* block subtitle *))
+  Partial penetration test report -- ((( report_version | tex )))
+((* endblock subtitle *))
+
+
 ((* block content *))
   ((* include target.uname + "/target.tex.j2" *))
 ((* endblock content *))
