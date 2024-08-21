@@ -1,0 +1,34 @@
+% ((( MANUAL_EDIT_WARNING )))
+
+\documentclass{sereto}
+
+\title{
+  ((*- block title -*))
+    ((( id | tex ))) -- ((( name | tex )))
+  ((*- endblock title -*))
+}
+
+\subtitle{
+  ((*- block subtitle -*))
+    Penetration test report -- ((( report_version | tex )))
+  ((*- endblock subtitle -*))
+}
+
+\author{
+  ((*- block author -*))
+    ((( people | selectattr("type.value", "==", "author") | join(", ", "name") | tex )))
+  ((*- endblock author -*))
+}
+
+\begin{document}
+  ((= \maketitle =))
+  \makefront
+
+  ((*- block content *))
+    Something went wrong. Content section from the base_document.tex.j2 template was not overridden.
+  ((*- endblock content*))
+
+  \clearpage
+  \appendix
+  \printnoidxglossaries
+\end{document}

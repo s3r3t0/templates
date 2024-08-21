@@ -1,48 +1,34 @@
-% ((( MANUAL_EDIT_WARNING )))
+((* extends "base_document.tex.j2" *))
 
-\documentclass{sereto}
 
-\title{%
-    ((( id | tex )))
-    --
-    ((( name | tex )))
-}
+((* block subtitle *))
+    Statement of Work -- ((( report_version | tex )))
+((* endblock subtitle *))
 
-\subtitle{%
-    Statement of Work
-    --
-    ((( report_version | tex )))
-}
 
-\author{%
-    ((( people | selectattr("type.value", "==", "author") | join(", ", "name") | tex )))
-}
+((* block content *))
 
-\begin{document}
+  \chapter{Management summary}
 
-    \makefront
-  
-    \chapter{Management summary}
+  The ((( people | selectattr("type.value", "==", "requestor") | join(", ", "name") | tex ))) are engaging the ((( people | selectattr("type.value", "==", "author") | join(", ", "name") | tex ))) to perform a penetration test \enquote{((( name | tex )))} (reference number ((( id | tex )))) as:
 
-    The ((( people | selectattr("type.value", "==", "requestor") | join(", ", "name") | tex ))) are engaging the ((( people | selectattr("type.value", "==", "author") | join(", ", "name") | tex ))) to perform a penetration test \enquote{((( name | tex )))} (reference number ((( id | tex )))) as:
+  \begin{itemize}
+  ((* for target in targets *))
+    \item ((( target.category | upper | tex ))) test of the \hyperref[((( target.uname )))]{((( target.name | tex )))} target
+  ((* endfor *))
+  \end{itemize}
 
-    \begin{itemize}
-    ((* for target in targets *))
-      \item ((( target.category | upper | tex ))) test of the \hyperref[((( target.uname )))]{((( target.name | tex )))} target
-    ((* endfor *))
-    \end{itemize}
+  The Penetration Testing team will perform the engagement in the following timeframe:
 
-    The Penetration Testing team will perform the engagement in the following timeframe:
-
-    \begin{itemize}
-    ((* for date in dates | selectattr("type.value", "==", "pentest_ongoing") *))
-      ((* if date.date.end *))
-        \item from ((( date.date.start | tex ))) to ((( date.date.end | tex )))
-      ((* else *))
-        \item during ((( date.date | tex )))
-      ((* endif *))
-    ((* endfor *))
-    \end{itemize}
+  \begin{itemize}
+  ((* for date in dates | selectattr("type.value", "==", "pentest_ongoing") *))
+    ((* if date.date.end *))
+      \item from ((( date.date.start | tex ))) to ((( date.date.end | tex )))
+    ((* else *))
+      \item during ((( date.date | tex )))
+    ((* endif *))
+  ((* endfor *))
+  \end{itemize}
 
   ((*- for target in targets *))
     \chapter{((( target.name )))}
@@ -78,7 +64,4 @@
 
   ((( lipsum(1, False) )))
 
-  \clearpage
-  \appendix
-  \printnoidxglossaries
-\end{document}
+((* endblock content *))
