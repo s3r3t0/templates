@@ -1,27 +1,11 @@
-\documentclass{sereto}
+((* extends "base_document.tex.j2" *))
 
-\title{%
-    ((( id | tex )))
-    --
-    ((( name | tex )))
-}
 
-\subtitle{%
-    Penetration test report
-    --
-    ((( report_version | tex )))
-}
+((* block subtitle *))
+  Partial penetration test report -- ((( report_version | tex )))
+((* endblock subtitle *))
 
-\author{%
-    ((( people | selectattr("type.value", "==", "author") | join(", ", "name") | tex )))
-}
 
-\begin{document}
-  \maketitle
-
+((* block content *))
   ((* include target.uname + "/findings/" + finding_group.uname + ".tex.j2" *))
-
-  \clearpage
-  \appendix
-  \printnoidxglossaries
-\end{document}
+((* endblock content *))
