@@ -13,6 +13,8 @@
 \RequirePackage{xcolor}
 % page layout
 \RequirePackage[margin=2.5cm,includehead=true,includefoot=true,centering]{geometry}
+% box positioning
+\RequirePackage[export]{adjustbox}
 % extending options for including pictures
 \RequirePackage{graphicx}
 % floating figures and tables
@@ -129,7 +131,7 @@
     \clearpairofpagestyles
     \ihead*{\@title}
     \chead*{}
-    \ohead*{\@date}
+    \ohead*{\includegraphics[height=6mm, valign=B]{logo_line}}
     \ifoot*{\@author}
     \cfoot*{}
     \ofoot*{\thepage}
@@ -190,6 +192,8 @@
             \vskip 2em
             \noindent {\Large \textsf{\@author}}
             \vfill
+            \noindent
+            \includegraphics[width=30mm, left]{logo}
             \textsf{\@date}
         \end{flushleft}
     \end{titlepage}
