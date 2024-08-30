@@ -7,6 +7,7 @@
 \RequirePackage{setspace}
 \RequirePackage{unicode-math}
 \RequirePackage{lmodern}
+\RequirePackage{soul}
 % minted for code highlighting
 \RequirePackage[outputdir=.build_artifacts]{minted}
 % colors
