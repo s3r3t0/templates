@@ -1,21 +1,45 @@
-((* extends "_target.tex" *))
+\chapter{((( target.name )))}
+\label{((( target.uname )))}
 
 
-((* block description -*))
-  The ((( target.name ))) is a web application that ((( lipsum(1, False) ))).
-((*- endblock description *))
+The ((( target.name ))) is a web application that ((( lipsum(1, False) ))).
 
+\section{Assigment}
 
-((* block assignment -*))
-  ((( lipsum(1, False) )))
-((*- endblock assignment *))
+The penetration test focused on the following areas: ((( lipsum(1, False) )))
 
+((* include target.uname + "/scope" + version.path_suffix + ".tex.j2" *))
 
-((* block limitations -*))
-  ((*- if target.waf_present and not target.waf_whitelisted *))
-    \subsection{Limitations}
+((*- if target.waf_present and not target.waf_whitelisted *))
+  \subsection{Limitations}
 
-    The target was protected by \ac{waf} but our \ac{ip} was not whitelisted during the penetration test.
-    This may have a significant impact on the results.
-  ((* endif -*))
-((*- endblock limitations *))
+  The target was protected by \ac{waf} but our \ac{ip} was not whitelisted during the penetration test.
+  This may have a significant impact on the results.
+((* endif -*))
+
+((* include target.uname + "/approach" + version.path_suffix + ".tex.j2" *))
+
+\section{Findings}
+
+((*- set findings_cnt = target.findings_config.finding_groups |length *))
+
+((*- if findings_cnt > 0 *))
+  During the penetration test of the ((( target.name ))) target, we discovered ((( findings_cnt ))) ((* if findings_cnt > 1 -*)) vulnerabilities ((*- else -*)) vulnerability ((*- endif *)).
+
+  \begin{center}
+    \includegraphics[width=\textwidth]{((( target.uname )))/risks.png}
+  \end{center}
+
+  The table below gives an overview of the vulnerabilities and the risk classification.
+
+  ((* include "findings_table.tex.j2" *))
+
+  You may find the technical description of the discovered vulnerabilities and mitigation recommendation in the following sections.
+
+  ((* for finding_group in target.findings_config.finding_groups -*))
+    \clearpage
+    ((* include target.uname + "/findings/" + finding_group.uname + ".tex.j2" *))
+  ((* endfor -*))
+((* else *))
+  During the penetration test of the ((( target.name ))) target, we were not able to locate any vulnerability within the scope of the assessment.
+((* endif -*))
