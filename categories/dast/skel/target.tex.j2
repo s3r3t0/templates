@@ -7,15 +7,15 @@
 
 
 ((* block assignment -*))
-    ((( lipsum(1, False) )))
+  ((( lipsum(1, False) )))
 ((*- endblock assignment *))
 
 
 ((* block limitations -*))
-((*- if target.waf_present and not target.waf_whitelisted *))
-  \subsection{Limitations}
+  ((*- if target.waf_present and not target.waf_whitelisted *))
+    \subsection{Limitations}
 
-  The target was protected by \ac{waf} but our \ac{ip} was not whitelisted during the penetration test.
-  This may have a significant impact on the results.
-((* endif -*))
+    The target was protected by \ac{waf} but our \ac{ip} was not whitelisted during the penetration test.
+    This may have a significant impact on the results.
+  ((* endif -*))
 ((*- endblock limitations *))

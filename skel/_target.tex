@@ -2,15 +2,15 @@
 \label{((( target.uname )))}
 
 ((* block description *))
-    ((= Description =))
+  ((= Description =))
 ((* endblock *))
 
 \section{Assigment}
 
 ((* block assignment *))
-    The penetration test focused on the following areas:
+  The penetration test focused on the following areas:
 
-    ((( lipsum(1, False) )))
+  ((( lipsum(1, False) )))
 ((* endblock *))
 
 ((* include target.uname + "/scope" + version.path_suffix + ".tex.j2" *))
@@ -40,6 +40,5 @@
     ((* include target.uname + "/findings/" + finding_group.uname + ".tex.j2" *))
   ((* endfor -*))
 ((* else *))
-    During the penetration test of the ((( target.name ))) target, the we were not able to locate any vulnerability within the scope of the assessment.
+  During the penetration test of the ((( target.name ))) target, the we were not able to locate any vulnerability within the scope of the assessment.
 ((* endif -*))
-

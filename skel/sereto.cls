@@ -7,6 +7,7 @@
 \RequirePackage{setspace}
 \RequirePackage{unicode-math}
 \RequirePackage{lmodern}
+\RequirePackage{soul}
 % minted for code highlighting
 \RequirePackage[outputdir=.build_artifacts]{minted}
 % colors
@@ -40,11 +41,11 @@
 \RequirePackage[headsepline,footsepline]{scrlayer-scrpage}
 % glossaries
 \RequirePackage[
-    acronym,
-    nomain,
-    shortcuts,
-    nogroupskip,
-    numberedsection=nolabel
+  acronym,
+  nomain,
+  shortcuts,
+  nogroupskip,
+  numberedsection=nolabel
 ]{glossaries}
 
 % set spacing
@@ -69,37 +70,37 @@
 
 % minted settings
 \setminted{
-    autogobble=true,
-    breaklines=true,
-    breakanywhere=true,
-    linenos=true,
-    numbers=left,
-    showspaces=false,
-    showtabs=false,
+  autogobble=true,
+  breaklines=true,
+  breakanywhere=true,
+  linenos=true,
+  numbers=left,
+  showspaces=false,
+  showtabs=false,
 }
 %\setmintedinline{fontsize=\normalsize}
 \newcommand{\mintedpath}{./outputs/}
 \renewcommand{\theFancyVerbLine}{\color{code-numbers-color}\arabic{FancyVerbLine}}
 \newtcolorbox{mintedbox}{
-    colback=code-bg-color,
-    colframe=code-border-color,
-    boxrule=0.5pt,
-    before skip=1em,
-    after skip=1em,
-    left=2.7em,
-    right=0.4em,
+  colback=code-bg-color,
+  colframe=code-border-color,
+  boxrule=0.5pt,
+  before skip=1em,
+  after skip=1em,
+  left=2.7em,
+  right=0.4em,
 }
 \BeforeBeginEnvironment{minted}{\begin{mintedbox}}
 \AfterEndEnvironment{minted}{\end{mintedbox}}
 \renewcommand{\inputminted}[3][]{%
-    \begin{mintedbox}
-        \begingroup
-        \minted@configlang{#2}%
-        \setkeys{minted@opt@cmd}{#1}%
-        \minted@fvset
-        \minted@pygmentize[#3]{#2}%
-        \endgroup
-    \end{mintedbox}}
+  \begin{mintedbox}
+    \begingroup
+    \minted@configlang{#2}%
+    \setkeys{minted@opt@cmd}{#1}%
+    \minted@fvset
+    \minted@pygmentize[#3]{#2}%
+    \endgroup
+  \end{mintedbox}}
 
 % graphics settings
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -114,12 +115,12 @@
 % heading settings
 \setcounter{secnumdepth}{2}
 \ifx\paragraph\undefined\else
-    \let\oldparagraph\paragraph
-    \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
 \fi
 \ifx\subparagraph\undefined\else
-    \let\oldsubparagraph\subparagraph
-    \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 \addtokomafont{section}{\color{heading-color}}
 \addtokomafont{chapter}{\color{heading-color}}
@@ -128,28 +129,28 @@
 
 % header and footer settings
 \newpairofpagestyles{seretoStyle}{
-    \clearpairofpagestyles
-    \ihead*{\@title}
-    \chead*{}
-    \ohead*{\includegraphics[height=6mm, valign=B]{logo_line}}
-    \ifoot*{\@author}
-    \cfoot*{}
-    \ofoot*{\thepage}
-    \addtokomafont{pageheadfoot}{\upshape}
+  \clearpairofpagestyles
+  \ihead*{\@title}
+  \chead*{}
+  \ohead*{\includegraphics[height=6mm, valign=B]{logo_line}}
+  \ifoot*{\@author}
+  \cfoot*{}
+  \ofoot*{\thepage}
+  \addtokomafont{pageheadfoot}{\upshape}
 }
 \pagestyle{seretoStyle}
 
 % hyperref settings
 \hypersetup{
-    pdftitle={},
-    pdfauthor={},
-    colorlinks=true,
-    linkcolor=default-linkcolor,
-    filecolor=default-filecolor,
-    citecolor=default-citecolor,
-    urlcolor=default-urlcolor,
-    breaklinks=true,
-    pdfcreator={}%
+  pdftitle={},
+  pdfauthor={},
+  colorlinks=true,
+  linkcolor=default-linkcolor,
+  filecolor=default-filecolor,
+  citecolor=default-citecolor,
+  urlcolor=default-urlcolor,
+  breaklinks=true,
+  pdfcreator={}%
 }
 
 % caption settings
@@ -175,37 +176,36 @@
 % Front matter
 
 \renewcommand{\maketitle}{
-    \begin{titlepage}
-        \newgeometry{left=6cm}
-        \begin{flushleft}
-            \noindent
-            \\[-1em]
-            \color[HTML]{5F5F5F}
-            \makebox[0pt][l]{\textcolor[HTML]{435488}{\rule{1.3\textwidth}{4pt}}}
-            \par
-            \noindent
-            \setstretch{1.4}
-            \vfill
-            \noindent {\huge \textbf{\textsf{\@title}}}
-            \vskip 1em
-            {\Large \textsf{\@subtitle}}
-            \vskip 2em
-            \noindent {\Large \textsf{\@author}}
-            \vfill
-            \noindent
-            \includegraphics[width=30mm, left]{logo}
-            \textsf{\@date}
-        \end{flushleft}
-    \end{titlepage}
-    \restoregeometry
+  \begin{titlepage}
+    \newgeometry{left=6cm}
+    \begin{flushleft}
+      \noindent
+      \\[-1em]
+      \color[HTML]{5F5F5F}
+      \makebox[0pt][l]{\textcolor[HTML]{435488}{\rule{1.3\textwidth}{4pt}}}
+      \par
+      \noindent
+      \setstretch{1.4}
+      \vfill
+      \noindent {\huge \textbf{\textsf{\@title}}}
+      \vskip 1em
+      {\Large \textsf{\@subtitle}}
+      \vskip 2em
+      \noindent {\Large \textsf{\@author}}
+      \vfill
+      \noindent
+      \includegraphics[width=30mm, left]{logo}
+      \textsf{\@date}
+    \end{flushleft}
+  \end{titlepage}
+  \restoregeometry
 }
 
 \newcommand{\makefront}{
-    \pagenumbering{gooble}
-    \maketitle
-    \pagenumbering{roman}
-    \tableofcontents
-    \clearpage
-    \pagenumbering{arabic}
+  \pagenumbering{gooble}
+  \maketitle
+  \pagenumbering{roman}
+  \tableofcontents
+  \clearpage
+  \pagenumbering{arabic}
 }
-
