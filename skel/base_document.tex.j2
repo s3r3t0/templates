@@ -24,9 +24,7 @@
   ((= \maketitle =))
   \makefront
 
-  ((*- block content *))
-    Something went wrong. Content section from the base_document.tex.j2 template was not overridden.
-  ((*- endblock content *))
+  ((* block content required *))((* endblock *))
 
   \clearpage
   \appendix
