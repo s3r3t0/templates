@@ -1,0 +1,14 @@
+((* macro findings_table(target, version) -*))
+  \begin{longtable}{ r l l }
+    \toprule
+    ID & Vulnerability description & Risk \\
+    \midrule
+    \endhead
+    ((* for finding_group in target.findings_config.finding_groups -*))
+      ((( loop.index ))) & %
+        ((( finding_group.name |tex ))) & %
+        ((( finding_group.risks[version] | capitalize | tex ))) \\
+    ((* endfor -*))
+    \bottomrule
+  \end{longtable}
+((*- endmacro *))

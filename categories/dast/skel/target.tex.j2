@@ -1,3 +1,5 @@
+((* from "macros.tex.j2" import findings_table *))
+
 \chapter{((( target.name )))}
 \label{((( target.uname )))}
 
@@ -32,7 +34,7 @@ The penetration test focused on the following areas: ((( lipsum(1, False) )))
 
   The table below gives an overview of the vulnerabilities and the risk classification.
 
-  ((* include "findings_table.tex.j2" *))
+  ((( findings_table(target, version) )))
 
   You may find the technical description of the discovered vulnerabilities and mitigation recommendation in the following sections.
 
