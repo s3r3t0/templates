@@ -1,0 +1,40 @@
+((* from "macros.tex.j2" import findings_table *))
+
+\chapter{((( target.name )))}
+\label{((( target.uname )))}
+
+
+The ((( target.name ))) is a web application that ((( lipsum(1, False) ))).
+
+\section{Assigment}
+
+The penetration test focused on the following areas: ((( lipsum(1, False) )))
+
+((* include target.uname + "/scope" + version.path_suffix + ".tex.j2" *))
+
+((* include target.uname + "/approach" + version.path_suffix + ".tex.j2" *))
+
+\section{Findings}
+
+((*- set findings_cnt = target.findings_config.finding_groups |length *))
+
+((*- if findings_cnt > 0 *))
+  During the penetration test of the ((( target.name ))) target, we discovered ((( findings_cnt ))) ((* if findings_cnt > 1 -*)) vulnerabilities ((*- else -*)) vulnerability ((*- endif *)).
+
+  \begin{center}
+    \includegraphics[width=\textwidth]{((( target.uname )))/risks.png}
+  \end{center}
+
+  The table below gives an overview of the vulnerabilities and the risk classification.
+
+  ((( findings_table(target, version) )))
+
+  You may find the technical description of the discovered vulnerabilities and mitigation recommendation in the following sections.
+
+  ((* for finding_group in target.findings_config.finding_groups -*))
+    \clearpage
+    ((* include target.uname + "/findings/" + finding_group.uname + ".tex.j2" *))
+  ((* endfor -*))
+((* else *))
+  During the penetration test of the ((( target.name ))) target, we were not able to locate any vulnerability within the scope of the assessment.
+((* endif -*))

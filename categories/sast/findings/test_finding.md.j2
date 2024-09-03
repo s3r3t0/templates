@@ -1,0 +1,103 @@
++++
+name = "Test finding"
+risk = "informational"
+keywords = ["test"]
+
+[[variables]]
+name = "images"
+description = "Screenshots showing proof of a vulnerability"
+required = true
+list = true
+
+[[variables]]
+name = "output"
+description = "Vulnerable file or snippet"
++++
+
+
+{% extends "_base.md" %}
+
+
+{% block description -%}
+Iure eum debitis nam impedit. Eaque id est ab non nihil.
+
+
+{% for image in f.vars.images -%}
+    ![Screenshot showing proof of a vulnerability]({{image}})
+{% endfor %}
+ 
+Quibusdam quae aut incidunt mollitia ut. Aut commodi nisi id officiis ea non.
+
+{% if f.vars.output -%}
+    ` `{source={{f.vars.output}}}
+{% endif %}
+
+Molestiae vitae qui impedit provident sit corrupti occaecati repellat et. Id nesciunt enim nam.
+
+```{.py linenos=true}
+import os
+
+os.dosomething("python")
+```
+
+Vitae _nam *eum* similique_ eaque. ~~Unde sit quibusdam pariatur quam repudiandae aut et iste.~~ Ea saepe vel ad quia [voluptatem]{.underline} molestiae dolores quis.[^footnote]
+
+[^footnote]: I am a footnote.
+ 
+Lorem
+
+: Tempora eveniet eius quam animi qui. Dolores distinctio provident.
+
+Ipsum
+
+: Laudantium laboriosam quis suscipit consequatur neque. In ut facilis.
+
+Fuga est quibusdam architecto fugiat deserunt id ut sit tempore. Animi at omnis facere reprehenderit porro vitae sit.
+
+|Left | Center | Right|Default|
+|:----|:------:|-----:|-------|
+| 1   | 2      | 3    | 4     |
+| 5   | 6      | 7    | 8     |
+
+| Acronyms           |             |
+|--------------------|-------------|
+| Default            | [!regex]    |
+| Short              | [!regex<]   |
+| Long               | [!regex>]   |
+| Full               | [!regex!]   |
+| Default plural     | [!+regex]   |
+| Short plural       | [!+regex<]  |
+| Long plural        | [!+regex>]  |
+| Full plural        | [!+regex!]  |
+| Default cap        | [!^regex]   |
+| Short cap          | [!^regex<]  |
+| Long cap           | [!^regex>]  |
+| Full cap           | [!^regex!]  |
+| Default cap plural | [!+^regex]  |
+| Short cap plural   | [!+^regex<] |
+| Long cap plural    | [!+^regex>] |
+| Full cap plural    | [!+^regex!] |
+
+{%- endblock description %}
+
+
+{% block likelihood -%}
+Laboriosam eligendi voluptatem maiores sequi inventore ipsum quaerat ipsam et. Commodi provident omnis non nihil quia nisi unde aut itaque. Dicta quidem perspiciatis omnis. Consequuntur quasi ut suscipit quia.
+{%- endblock likelihood %}
+
+
+{% block impact -%}
+Consequatur qui minus ut. Tempora aliquid veniam reiciendis temporibus asperiores. Aut ducimus earum. Dicta esse voluptatem.
+{%- endblock impact %}
+
+
+{% block recommendation -%}
+- Ipsum consectetur cum et voluptates exercitationem nulla deserunt omnis aperiam.
+- Iusto aut in corrupti.
+{%- endblock recommendation %}
+
+
+{% block reference -%}
+- [Pandoc's Markdown](https://pandoc.org/MANUAL.html#pandocs-markdown)
+- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
+{%- endblock reference %}
