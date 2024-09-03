@@ -1,25 +1,21 @@
+((* from "macros.tex.j2" import findings_table *))
+
 \chapter{((( target.name )))}
 \label{((( target.uname )))}
 
-((* block description *))
-  ((= Description =))
-((* endblock *))
+
+The ((( target.name ))) is a web application that ((( lipsum(1, False) ))).
 
 \section{Assigment}
 
-((* block assignment *))
-  The penetration test focused on the following areas:
-
-  ((( lipsum(1, False) )))
-((* endblock *))
+The penetration test focused on the following areas: ((( lipsum(1, False) )))
 
 ((* include target.uname + "/scope" + version.path_suffix + ".tex.j2" *))
-
-((* block limitations -*))((*- endblock limitations *))
 
 ((* include target.uname + "/approach" + version.path_suffix + ".tex.j2" *))
 
 \section{Findings}
+
 ((*- set findings_cnt = target.findings_config.finding_groups |length *))
 
 ((*- if findings_cnt > 0 *))
@@ -31,7 +27,7 @@
 
   The table below gives an overview of the vulnerabilities and the risk classification.
 
-  ((* include "findings_table.tex.j2" *))
+  ((( findings_table(target, version) )))
 
   You may find the technical description of the discovered vulnerabilities and mitigation recommendation in the following sections.
 
@@ -40,5 +36,5 @@
     ((* include target.uname + "/findings/" + finding_group.uname + ".tex.j2" *))
   ((* endfor -*))
 ((* else *))
-  During the penetration test of the ((( target.name ))) target, the we were not able to locate any vulnerability within the scope of the assessment.
+  During the penetration test of the ((( target.name ))) target, we were not able to locate any vulnerability within the scope of the assessment.
 ((* endif -*))

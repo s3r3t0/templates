@@ -1,0 +1,23 @@
+\subsection{Scope}
+
+The scope of the static application test was limited to the scope given below.
+
+\begin{longtable}{ r l }
+  \toprule
+  Name of the target & ((( target.name ))) \\
+  Source code provider & %
+    ((( target.code_origin ))) \\
+  Source code origin & %
+    ((( target.code_origin_name | tex ))) \\
+  \bottomrule
+\end{longtable}
+
+((* if target.code_integrity | length > 0 *))
+  Source code integrity (SHA-256):
+  \begin{description}
+    ((* for k,v in target.code_integrity.items() *))
+      \item[\nolinkurl{ (((- k -))) }] \nolinkurl{ (((- v -))) }
+    ((* endfor *))
+  \end{description}
+((* endif *))
+
