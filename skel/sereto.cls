@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sereto}[2024/06/01 SeReTo LaTeX class]
+\ProvidesClass{sereto}[2024/09/05 SeReTo LaTeX class]
 
 \LoadClass[captions=tableheading]{scrbook}
 

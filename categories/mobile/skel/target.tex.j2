@@ -4,7 +4,7 @@
 \label{((( target.uname )))}
 
 
-The ((( target.name ))) is an application that ((( lipsum(1, False) ))).
+The ((( target.name ))) is a mobile application that ((( lipsum(1, False) ))).
 
 \section{Assigment}
 
@@ -24,21 +24,7 @@ The penetration test focused on the following areas: ((( lipsum(1, False) )))
   \begin{center}
     \includegraphics[width=\textwidth]{((( target.uname )))/risks.png}
   \end{center}
-((* else *))
-  During the penetration test of the ((( target.name ))) target, we were not able to locate any vulnerability within the scope of the assessment.
-((* endif -*))
 
-((* if target.source_code_analyzer_files | length > 0 *))
-  You can also see the information provided by the automatic scanner in the following files:
-
-  \begin{itemize}
-    ((* for file in target.source_code_analyzer_files *))
-      \item \nolinkurl{ (((- file | tex -))) }
-    ((* endfor *))
-  \end{itemize}
-((* endif *))
-
-((*- if findings_cnt > 0 *))
   The table below gives an overview of the vulnerabilities and the risk classification.
 
   ((( findings_table(target, version) )))
@@ -49,5 +35,6 @@ The penetration test focused on the following areas: ((( lipsum(1, False) )))
     \clearpage
     ((* include target.uname + "/findings/" + finding_group.uname + ".tex.j2" *))
   ((* endfor -*))
+((* else *))
+  During the penetration test of the ((( target.name ))) target, we were not able to locate any vulnerability within the scope of the assessment.
 ((* endif -*))
-
