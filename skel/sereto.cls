@@ -7,7 +7,6 @@
 \RequirePackage{setspace}
 \RequirePackage{unicode-math}
 \RequirePackage{lmodern}
-\RequirePackage{soul}
 % minted for code highlighting
 \RequirePackage[outputdir=.build_artifacts]{minted}
 % colors
@@ -23,7 +22,8 @@
 % tables
 \RequirePackage{longtable,booktabs,array,colortbl}
 % letterspacing, underlining, overstriking, highlighting
-\RequirePackage[normalem]{ulem}
+\RequirePackage{soul}           % (Pandoc post 3.0.0)
+\RequirePackage[normalem]{ulem} % (Pandoc pre 3.0.0)
 % advanced quotation
 \RequirePackage[style=american]{csquotes}
 % cross-referencing and urls
@@ -39,6 +39,8 @@
 \RequirePackage{tcolorbox}
 % header and footer
 \RequirePackage[headsepline,footsepline]{scrlayer-scrpage}
+% lists
+\RequirePackage{enumitem}
 % glossaries
 \RequirePackage[
   acronym,
@@ -111,6 +113,8 @@
 
 % list settings
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setlist[1]{beginpenalty=1000,
+            midpenalty=10}
 
 % heading settings
 \setcounter{secnumdepth}{2}
