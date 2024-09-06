@@ -1,9 +1,24 @@
 ((* extends "base_document.tex.j2" *))
 
 
-((* block subtitle *))
+((*- block subtitle -*))
   Statement of Work -- ((( report_version | tex )))
-((* endblock subtitle *))
+((*- endblock subtitle -*))
+
+
+((*- block date -*))
+  ((* if dates | selectattr("type.value", "==", "sow_sent") | list | length *))
+    (((- dates | selectattr("type.value", "==", "sow_sent") | list | last | attr("date") -)))
+  ((* elif dates | selectattr("type.value", "==", "pentest_ongoing") | list | length *))
+    ((* if dates | selectattr("type.value", "==", "pentest_ongoing") | list | first | attr("date") | attr("start") *))
+      (((- dates | selectattr("type.value", "==", "pentest_ongoing") | list | first | attr("date") | attr("start") -)))
+    ((* else *))
+      (((- dates | selectattr("type.value", "==", "pentest_ongoing") | list | first | attr("date") -)))
+    ((* endif *))
+  ((* else *))
+    01-Dec-2161
+  ((* endif *))
+((*- endblock date -*))
 
 
 ((* block content *))

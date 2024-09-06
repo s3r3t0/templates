@@ -1,4 +1,5 @@
 % ((( MANUAL_EDIT_WARNING )))
+((* import "dates.tex.j2" as d *))
 
 \documentclass{sereto}
 
@@ -18,6 +19,12 @@
   ((*- block author -*))
     ((( people | selectattr("type.value", "==", "author") | join(", ", "name") | tex )))
   ((*- endblock author -*))
+}
+
+\date{
+  ((*- block date -*))
+    ((( d.publish_date(dates) )))
+  ((*- endblock date -*))
 }
 
 \begin{document}
