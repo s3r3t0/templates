@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sereto}[2024/09/05 SeReTo LaTeX class]
+\ProvidesClass{sereto}[2024/09/06 SeReTo LaTeX class]
 
 \LoadClass[captions=tableheading]{scrbook}
 
@@ -36,7 +36,7 @@
 \RequirePackage[default]{sourcesanspro}
 \RequirePackage{sourcecodepro}
 % color boxes
-\RequirePackage{tcolorbox}
+\RequirePackage[breakable]{tcolorbox}
 % header and footer
 \RequirePackage[headsepline,footsepline]{scrlayer-scrpage}
 % lists
@@ -69,6 +69,9 @@
 \definecolor{code-bg-color}{HTML}{F7F7F7}
 \definecolor{code-border-color}{HTML}{B3B2B3}
 \definecolor{code-numbers-color}{HTML}{B3B2B3}
+
+% colorbox settings
+\tcbset{breakable}
 
 % minted settings
 \setminted{
@@ -177,6 +180,13 @@
 \include{glossary}
 \glsfindwidesttoplevelname
 
+% version info
+\newcommand{\@versioninfo}{\relax}
+\newcommand{\versioninfo}[1]{\renewcommand{\@versioninfo}{%
+  \chapter*{Version Information}
+  #1%
+}}
+
 % Front matter
 
 \renewcommand{\maketitle}{
@@ -209,6 +219,7 @@
   \pagenumbering{gooble}
   \maketitle
   \pagenumbering{roman}
+  \@versioninfo
   \tableofcontents
   \clearpage
   \pagenumbering{arabic}

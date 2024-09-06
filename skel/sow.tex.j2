@@ -35,15 +35,17 @@
 
   The Penetration Testing team will perform the engagement in the following timeframe:
 
-  \begin{itemize}
-  ((* for date in dates | selectattr("type.value", "==", "pentest_ongoing") *))
-    ((* if date.date.end *))
-      \item from ((( date.date.start | tex ))) to ((( date.date.end | tex )))
-    ((* else *))
-      \item during ((( date.date | tex )))
-    ((* endif *))
-  ((* endfor *))
-  \end{itemize}
+  ((* if dates | selectattr("type.value", "==", "pentest_ongoing") | list | length *))
+    \begin{itemize}
+    ((* for date in dates | selectattr("type.value", "==", "pentest_ongoing") *))
+      ((* if date.date.end *))
+        \item from ((( date.date.start | tex ))) to ((( date.date.end | tex )))
+      ((* else *))
+        \item during ((( date.date | tex )))
+      ((* endif *))
+    ((* endfor *))
+    \end{itemize}
+  ((* endif *))
 
   ((*- for target in targets *))
     \chapter{((( target.name )))}

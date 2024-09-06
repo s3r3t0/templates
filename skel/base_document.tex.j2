@@ -1,4 +1,5 @@
 % ((( MANUAL_EDIT_WARNING )))
+((* from "macros.tex.j2" import authors, reviewers *))
 ((* import "dates.tex.j2" as d *))
 
 \documentclass{sereto}
@@ -17,7 +18,7 @@
 
 \author{
   ((*- block author -*))
-    ((( people | selectattr("type.value", "==", "author") | join(", ", "name") | tex )))
+    ((( authors(people) )))
   ((*- endblock author -*))
 }
 
@@ -25,6 +26,23 @@
   ((*- block date -*))
     ((( d.publish_date(dates) )))
   ((*- endblock date -*))
+}
+
+\versioninfo{
+  ((*- block version -*))
+    \begin{longtable}{ l l r }
+      \toprule
+      Version & Author & Date \\
+      \midrule
+      \endhead
+      Initial version & ((( authors(people) ))) & ((( d.pentest_start(dates) ))) \\
+      Final version & ((( authors(people) ))) & ((( d.pentest_end(dates) ))) \\
+      ((* if people | selectattr("type.value", "==", "reviewer") | list | length *))
+        Review & ((( reviewers(people) ))) & ((( d.review_date(dates) ))) \\
+      ((* endif *))
+      \bottomrule
+    \end{longtable}
+  ((*- endblock version -*))
 }
 
 \begin{document}
