@@ -26,5 +26,4 @@ The latest version of the template is tested with the latest version of SeReTo.
 The major and minor versions of the template and SeReTo should match.
 Patch versions are reserved for changes related to the template only.
 
-> Created with support of [NN Management Services, s.r.o.](https://www.nn.cz/kariera/en/it-hub/)
-
+> Created with support of [NN Management Services, s.r.o.](https://www.nn.cz/kariera/en/nn-digital-hub/)

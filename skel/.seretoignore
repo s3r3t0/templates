@@ -30,5 +30,4 @@ _minted*
 
 # Exceptions
 !glossary.tex
-!pictures/logo.pdf
-!pictures/logo_line.pdf
+!pictures/*.pdf
