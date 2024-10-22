@@ -12,10 +12,6 @@ The style is inspired by the [Eisvogel](https://github.com/Wandmalfarbe/pandoc-l
 
 ## Prerequisites
 
-- [Python 3.10+](https://wiki.python.org/moin/BeginnersGuide/Download)
-- [pipx](https://pipx.pypa.io/stable/installation/)
-- [TeX Live](https://www.tug.org/texlive/doc/texlive-en/texlive-en.html#installation)
-- [pandoc](https://pandoc.org/installing.html)
 - [SeReTo](https://sereto.s4n.cz/getting_started/installation/)
 
 ## FAQ
