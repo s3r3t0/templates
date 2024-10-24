@@ -27,15 +27,19 @@
 
   The ((( people | selectattr("type.value", "==", "requestor") | join(", ", "name") | tex ))) are engaging the ((( people | selectattr("type.value", "==", "author") | join(", ", "name") | tex ))) to perform a penetration test \enquote{((( name | tex )))} (reference number ((( id | tex )))) as:
 
-  \begin{itemize}
-  ((* for target in targets *))
-    \item ((( target.category | upper | tex ))) test of the \hyperref[((( target.uname )))]{((( target.name | tex )))} target
-  ((* endfor *))
-  \end{itemize}
-
-  The Penetration Testing team will perform the engagement in the following timeframe:
+  ((* if targets | length *))
+    \begin{itemize}
+    ((* for target in targets *))
+      \item ((( target.category | upper | tex ))) test of the \hyperref[((( target.uname )))]{((( target.name | tex )))} target
+    ((* endfor *))
+    \end{itemize}
+  ((* else *))
+    The target of the engagement has not been specified.
+  ((* endif *))
 
   ((* if dates | selectattr("type.value", "==", "pentest_ongoing") | list | length *))
+    The Penetration Testing team will perform the engagement in the following timeframe:
+
     \begin{itemize}
     ((* for date in dates | selectattr("type.value", "==", "pentest_ongoing") *))
       ((* if date.date.end *))
@@ -45,6 +49,8 @@
       ((* endif *))
     ((* endfor *))
     \end{itemize}
+  ((* else *))
+    The engagement timeframe has not been specified.
   ((* endif *))
 
   ((*- for target in targets *))

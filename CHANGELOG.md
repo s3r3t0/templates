@@ -7,8 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
 - rd category template
 - scenario category template
+
+### Fixed
+
+- The basic template renders with clean configuration. 
 
 ## [0.0.3] - 2024-09-06
 
