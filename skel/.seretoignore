@@ -31,3 +31,7 @@ _minted*
 # Exceptions
 !glossary.tex
 !pictures/*.pdf
+
+# Ensure core files are always present
+!.sereto
+!config.json
