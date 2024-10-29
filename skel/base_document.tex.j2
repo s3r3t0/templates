@@ -37,7 +37,7 @@
       \endhead
       Initial version & ((( authors(people) ))) & ((( d.pentest_start(dates) ))) \\
       Final version & ((( authors(people) ))) & ((( d.pentest_end(dates) ))) \\
-      ((* if people | selectattr("type.value", "==", "reviewer") | list | length *))
+      ((* if c.filter_people(type="reviewer") | length *))
         Review & ((( reviewers(people) ))) & ((( d.review_date(dates) ))) \\
       ((* endif *))
       \bottomrule

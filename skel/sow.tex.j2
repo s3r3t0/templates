@@ -7,13 +7,13 @@
 
 
 ((*- block date -*))
-  ((* if dates | selectattr("type.value", "==", "sow_sent") | list | length *))
-    (((- dates | selectattr("type.value", "==", "sow_sent") | list | last | attr("date") -)))
-  ((* elif dates | selectattr("type.value", "==", "pentest_ongoing") | list | length *))
-    ((* if dates | selectattr("type.value", "==", "pentest_ongoing") | list | first | attr("date") | attr("start") *))
-      (((- dates | selectattr("type.value", "==", "pentest_ongoing") | list | first | attr("date") | attr("start") -)))
+  ((* if c.filter_dates(type="sow_sent") | length *))
+    (((- c.filter_dates(type="sow_sent") | last -)))
+  ((* elif c.filter_dates(type="pentest_ongoing") | length *))
+    ((* if c.filter_dates(type="pentest_ongoing") | first | attr("date") | attr("start") *))
+      (((- c.filter_dates(type="pentest_ongoing") | first | attr("date") | attr("start") -)))
     ((* else *))
-      (((- dates | selectattr("type.value", "==", "pentest_ongoing") | list | first | attr("date") -)))
+      (((- c.filter_dates(type="pentest_ongoing") | first -)))
     ((* endif *))
   ((* else *))
     01-Dec-2161
@@ -25,7 +25,7 @@
 
   \chapter{Management summary}
 
-  The ((( people | selectattr("type.value", "==", "requestor") | join(", ", "name") | tex ))) are engaging the ((( people | selectattr("type.value", "==", "author") | join(", ", "name") | tex ))) to perform a penetration test \enquote{((( name | tex )))} (reference number ((( id | tex )))) as:
+  The ((( c.filter_people(type="requestor") | join(", ", "name") | tex ))) are engaging the ((( c.filter_people(type="author") | join(", ", "name") | tex ))) to perform a penetration test \enquote{((( name | tex )))} (reference number ((( id | tex )))) as:
 
   ((* if targets | length *))
     \begin{itemize}
@@ -37,16 +37,12 @@
     The target of the engagement has not been specified.
   ((* endif *))
 
-  ((* if dates | selectattr("type.value", "==", "pentest_ongoing") | list | length *))
+  ((* if c.filter_dates(type="pentest_ongoing") | length *))
     The Penetration Testing team will perform the engagement in the following timeframe:
 
     \begin{itemize}
-    ((* for date in dates | selectattr("type.value", "==", "pentest_ongoing") *))
-      ((* if date.date.end *))
-        \item from ((( date.date.start | tex ))) to ((( date.date.end | tex )))
-      ((* else *))
-        \item during ((( date.date | tex )))
-      ((* endif *))
+    ((* for date in c.filter_dates(type="pentest_ongoing") *))
+      \item ((( date )))
     ((* endfor *))
     \end{itemize}
   ((* else *))

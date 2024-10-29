@@ -17,7 +17,7 @@
   <img src="https://raw.githubusercontent.com/s3r3t0/sereto/main/docs/assets/logo/sereto_block_black.svg" alt="SeReTo logo" align="right" height="120"/>
 </picture>
 
-A basic template structure for documents created with the [Security Reporting Tool(SeReTo)][SeReTo].
+A basic template structure for documents created with the [Security Reporting Tool (SeReTo)][SeReTo].
 
 The style is inspired by the [Eisvogel] pandoc LaTeX template.
 
