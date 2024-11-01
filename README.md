@@ -1,21 +1,23 @@
 # Security Reporting Tool Templates
 
-[![GitHub release](https://img.shields.io/github/v/release/s3r3t0/templates)](https://github.com/s3r3t0/templates/releases/latest)
-[![GitHub release date](https://img.shields.io/github/release-date/s3r3t0/templates)](https://github.com/s3r3t0/templates/releases/latest)
-[![GitHub last commit](https://img.shields.io/github/last-commit/s3r3t0/templates)](https://github.com/s3r3t0/templates/commit/main)
-[![Debian package](https://img.shields.io/debian/v/pandoc?label=pandoc)](https://pandoc.org/MANUAL.html)
-[![Fedora package](https://img.shields.io/fedora/v/pandoc?label=pandoc)](https://pandoc.org/MANUAL.html)
-[![jinja2 version](https://img.shields.io/badge/jinja2-v3.1.0-blue)](https://jinja.palletsprojects.com/en/stable/)
-[![Documentation](https://img.shields.io/badge/documentation-SeReTo-blue)](https://sereto.s4n.cz/)
-[![GitHub License](https://img.shields.io/github/license/s3r3t0/templates)](https://github.com/s3r3t0/templates/blob/main/LICENSE)
-![GitHub language count](https://img.shields.io/github/languages/count/s3r3t0/templates)
-![GitHub top language](https://img.shields.io/github/languages/top/s3r3t0/templates)
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/s3r3t0/sereto/main/docs/assets/logo/sereto_block_white.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/s3r3t0/sereto/main/docs/assets/logo/sereto_block_black.svg">
-  <img src="https://raw.githubusercontent.com/s3r3t0/sereto/main/docs/assets/logo/sereto_block_black.svg" alt="SeReTo logo" align="right" height="120"/>
+  <img src="https://raw.githubusercontent.com/s3r3t0/sereto/main/docs/assets/logo/sereto_block_black.svg" alt="SeReTo logo" align="right" height="150"/>
 </picture>
+
+[![GitHub release](https://img.shields.io/github/v/release/s3r3t0/templates)][release]
+[![GitHub release date](https://img.shields.io/github/release-date/s3r3t0/templates)][release]
+[![GitHub last commit](https://img.shields.io/github/last-commit/s3r3t0/templates)](https://github.com/s3r3t0/templates/commit/main)
+
+[![Documentation](https://img.shields.io/badge/documentation-SeReTo-blue)](https://sereto.s4n.cz/)
+[![GitHub License](https://img.shields.io/github/license/s3r3t0/templates)][license]
+![GitHub language count](https://img.shields.io/github/languages/count/s3r3t0/templates)
+![GitHub top language](https://img.shields.io/github/languages/top/s3r3t0/templates)
+
+[![Debian package](https://img.shields.io/debian/v/pandoc?label=pandoc)][pandoc-manual]
+[![Fedora package](https://img.shields.io/fedora/v/pandoc?label=pandoc)][pandoc-manual]
+[![jinja2 version](https://img.shields.io/badge/jinja2-v3.1.0-blue)](https://jinja.palletsprojects.com/en/stable/)
 
 A basic template structure for documents created with the [Security Reporting Tool (SeReTo)][SeReTo].
 
@@ -58,7 +60,7 @@ You will be prompted to configure the template path when you run the [SeReTo] fo
 
 ## Versioning
 
-We use [Semantic Versioning][semver] for versioning. For the versions available, see the [tags on this repository][tags].
+We use [Semantic Versioning][semver] for versioning. For the versions available, see the [tags on this repository][tags] or the full [Changelog].
 
 We keep the major and minor version of the template in sync with [SeReTo].
 The latest version of the template is tested with the latest version of SeReTo.
@@ -88,4 +90,7 @@ The style is inspired by the [Eisvogel] pandoc LaTeX template.
 [semver]: https://semver.org
 [tags]: https://github.com/s3r3t0/templates/tags
 [license]: https://github.com/s3r3t0/templates/blob/main/LICENSE
+[Changelog]: https://github.com/s3r3t0/templates/blob/main/CHANGELOG.md
 [nn]: https://www.nn.cz/kariera/en/nn-digital-hub/
+[release]: https://github.com/s3r3t0/templates/releases/latest
+[pandoc-manual]: https://pandoc.org/MANUAL.html

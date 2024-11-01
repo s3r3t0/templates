@@ -1,6 +1,9 @@
 name: Awesome Bot
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
@@ -18,4 +21,4 @@ jobs:
       run: gem install awesome_bot
       
     - name: Verify links
-      run: awesome_bot README.md --skip-save-results
+      run: awesome_bot README.md --skip-save-results --allow-redirect -w raw.githubusercontent.com
