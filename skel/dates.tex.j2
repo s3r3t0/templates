@@ -32,8 +32,8 @@
 
 ((* macro pentest_end(dates) -*))
   ((* if dates | selectattr("type.value", "==", "pentest_ongoing") | list | length *))
-    ((* if dates | selectattr("type.value", "==", "pentest_ongoing") | list | first | attr("date") | attr("start") *))
-      (((- dates | selectattr("type.value", "==", "pentest_ongoing") | list | first | attr("date") | attr("start") -)))
+    ((* if dates | selectattr("type.value", "==", "pentest_ongoing") | list | first | attr("date") | attr("end") *))
+      (((- dates | selectattr("type.value", "==", "pentest_ongoing") | list | first | attr("date") | attr("end") -)))
     ((* else *))
       (((- dates | selectattr("type.value", "==", "pentest_ongoing") | list | first | attr("date") -)))
     ((* endif *))

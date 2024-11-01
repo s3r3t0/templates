@@ -35,11 +35,17 @@
       Version & Author & Date \\
       \midrule
       \endhead
-      Initial version & ((( authors(people) ))) & ((( d.pentest_start(dates) ))) \\
-      Final version & ((( authors(people) ))) & ((( d.pentest_end(dates) ))) \\
-      ((* if c.filter_people(type="reviewer") | length *))
-        Review & ((( reviewers(people) ))) & ((( d.review_date(dates) ))) \\
+      Initial version & ((( authors(config.people) ))) & ((( d.pentest_start(config.dates) ))) \\
+      Final version & ((( authors(config.people) ))) & ((( d.pentest_end(config.dates) ))) \\
+      ((* if config.filter_people(type="reviewer") | length *))
+        Review & ((( reviewers(config.people) ))) & ((( d.review_date(config.dates) ))) \\
       ((* endif *))
+      ((* for u in config.updates *))
+        ((( u.report_version | tex ))) & ((( authors(u.people) ))) & ((( d.pentest_end(u.dates) ))) \\
+        ((* if u.filter_people(type="reviewer") | length *))
+          Review & ((( reviewers(u.people) ))) & ((( d.review_date(u.dates) ))) \\
+        ((* endif *))
+      ((* endfor *))
       \bottomrule
     \end{longtable}
   ((*- endblock version -*))
