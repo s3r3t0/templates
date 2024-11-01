@@ -67,7 +67,7 @@ The latest version of the template is tested with the latest version of SeReTo.
 
 ## License
 
-This project is licensed under the [BSD 3-Clause License][license] - see the [LICENSE][license] file for details.
+This project is licensed under the [BSD 3-Clause License][license] - see the [LICENSE.md][license] file for details.
 
 ## FAQ
 
@@ -89,7 +89,7 @@ The style is inspired by the [Eisvogel] pandoc LaTeX template.
 [template]: https://github.com/new?template_name=templates&template_owner=s3r3t0
 [semver]: https://semver.org
 [tags]: https://github.com/s3r3t0/templates/tags
-[license]: https://github.com/s3r3t0/templates/blob/main/LICENSE
+[license]: https://github.com/s3r3t0/templates/blob/main/LICENSE.md
 [Changelog]: https://github.com/s3r3t0/templates/blob/main/CHANGELOG.md
 [nn]: https://www.nn.cz/kariera/en/nn-digital-hub/
 [release]: https://github.com/s3r3t0/templates/releases/latest
