@@ -7,17 +7,7 @@
 
 
 ((*- block date -*))
-  ((* if c.filter_dates(type="sow_sent") | length *))
-    (((- c.filter_dates(type="sow_sent") | last -)))
-  ((* elif c.filter_dates(type="pentest_ongoing") | length *))
-    ((* if c.filter_dates(type="pentest_ongoing") | first | attr("date") | attr("start") *))
-      (((- c.filter_dates(type="pentest_ongoing") | first | attr("date") | attr("start") -)))
-    ((* else *))
-      (((- c.filter_dates(type="pentest_ongoing") | first -)))
-    ((* endif *))
-  ((* else *))
-    01-Dec-2161
-  ((* endif *))
+  ((( c.filter_dates("sow_sent") | last | default("n/a") | tex )))
 ((*- endblock date -*))
 
 

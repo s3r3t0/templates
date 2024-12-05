@@ -12,7 +12,7 @@
   ((* elif dates | selectattr("type.value", "==", "sow_sent") | list | length *))
     (((- dates | selectattr("type.value", "==", "sow_sent") | list | last | attr("date") -)))
   ((* else *))
-    01-Jan-2161
+    n/a
   ((* endif *))
 ((*- endmacro *))
 
@@ -26,7 +26,7 @@
   ((* elif dates | selectattr("type.value", "==", "sow_sent") | list | length *))
     (((- dates | selectattr("type.value", "==", "sow_sent") | list | last | attr("date") -)))
   ((* else *))
-    01-Feb-2161
+    n/a
   ((* endif *))
 ((*- endmacro *))
 
@@ -40,7 +40,7 @@
   ((* elif dates | selectattr("type.value", "==", "sow_sent") | list | length *))
     (((- dates | selectattr("type.value", "==", "sow_sent") | list | last | attr("date") -)))
   ((* else *))
-    01-Mar-2161
+    n/a
   ((* endif *))
 ((*- endmacro *))
 
@@ -48,6 +48,6 @@
   ((* if dates | selectattr("type.value", "==", "review") | list | length *))
     (((- dates | selectattr("type.value", "==", "review") | list | last | attr("date") -)))
   ((* else *))
-    01-Apr-2161
+    n/a
   ((* endif *))
 ((*- endmacro *))

@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sereto}[2024/09/06 SeReTo LaTeX class]
+\ProvidesClass{sereto}[2024/12/05 SeReTo LaTeX class]
 
 \LoadClass[captions=tableheading]{scrbook}
 
@@ -94,6 +94,7 @@
   after skip=1em,
   left=2.7em,
   right=0.4em,
+  breakable,
 }
 \BeforeBeginEnvironment{minted}{\begin{mintedbox}}
 \AfterEndEnvironment{minted}{\end{mintedbox}}
