@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Document versioning table.
 - Contact information appendix.
+- Test plugin.
+
+### Removed
+
+- Author and Reviewer macros.
 
 ## [0.0.5] - 2024-10-29
 
@@ -31,7 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- The basic template renders with clean configuration. 
+- The basic template renders with clean configuration.
 
 ## [0.0.3] - 2024-09-06
 
@@ -52,4 +57,3 @@ Initial version
 [0.0.3]: https://github.com/s3r3t0/templates/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/s3r3t0/templates/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/s3r3t0/templates/releases/tag/v0.0.1
-

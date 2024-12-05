@@ -28,18 +28,20 @@
 }
 
 \versioninfo{
-  \begin{longtable}{ l l r }
+  \begin{longtable}{ l l l r }
     \toprule
-    Version & Author & Date \\
+    & Description & Author & Date \\
     \midrule
     \endhead
     ((* block version -*))
       ((* for v in config.versions() -*))
         ((* with c = config.at_version(v) -*))
-          Version ((( v ))) &%
+          ((( v ))) &%
+          ((( c.version_description ))) &%
           ((( c.filter_people("author") | join(", ", attribute="name") | tex ))) &%
           ((( d.publish_date(c.dates) ))) \\
           ((* if c.filter_people("reviewer") | length -*))
+            &%
             Review &%
             ((( c.filter_people("reviewer") | join(", ", attribute="name") | tex ))) &%
             ((( d.review_date(c.dates) ))) \\

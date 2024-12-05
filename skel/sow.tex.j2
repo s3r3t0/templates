@@ -12,10 +12,11 @@
 
 
 ((* block version -*))
-  % Version & Author & Date \\
+  % Version & Description & Author & Date \\
   ((* for v in config.versions() -*))
     ((* with c = config.at_version(v) -*))
-      Version ((( v ))) &%
+      ((( v ))) &%
+      ((( c.version_description ))) &%
       ((( c.filter_people("author") | join(", ", attribute="name") | tex ))) &%
       ((( c.filter_dates("sow_sent") | last | default("n/a") | tex ))) \\
     ((*- endwith *))
