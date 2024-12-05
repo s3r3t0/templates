@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Contact information appendix.
 - Test plugin.
 
+### Changed
+
+- Renamed `informational` severity to `info`.
+
 ### Removed
 
 - Author and Reviewer macros.
