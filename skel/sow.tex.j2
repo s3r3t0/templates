@@ -2,7 +2,7 @@
 
 
 ((*- block subtitle -*))
-  Statement of Work -- ((( report_version | tex )))
+  Statement of Work -- ((( version | tex )))
 ((*- endblock subtitle -*))
 
 
@@ -19,6 +19,18 @@
     01-Dec-2161
   ((* endif *))
 ((*- endblock date -*))
+
+
+((* block version -*))
+  % Version & Author & Date \\
+  ((* for v in config.versions() -*))
+    ((* with c = config.at_version(v) -*))
+      Version ((( v ))) &%
+      ((( c.filter_people("author") | join(", ", attribute="name") | tex ))) &%
+      ((( c.filter_dates("sow_sent") | last | default("n/a") | tex ))) \\
+    ((*- endwith *))
+  ((*- endfor *))
+((*- endblock version *))
 
 
 ((* block content *))

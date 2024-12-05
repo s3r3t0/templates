@@ -12,7 +12,7 @@
 
 \subtitle{
   ((*- block subtitle -*))
-    Penetration test report -- ((( report_version | tex )))
+    Penetration test report -- ((( version | tex )))
   ((*- endblock subtitle -*))
 }
 
@@ -29,26 +29,27 @@
 }
 
 \versioninfo{
-  ((*- block version -*))
     \begin{longtable}{ l l r }
       \toprule
       Version & Author & Date \\
       \midrule
       \endhead
-      Initial version & ((( authors(config.people) ))) & ((( d.pentest_start(config.dates) ))) \\
-      Final version & ((( authors(config.people) ))) & ((( d.pentest_end(config.dates) ))) \\
-      ((* if config.filter_people(type="reviewer") | length *))
-        Review & ((( reviewers(config.people) ))) & ((( d.review_date(config.dates) ))) \\
-      ((* endif *))
-      ((* for u in config.updates *))
-        ((( u.report_version | tex ))) & ((( authors(u.people) ))) & ((( d.pentest_end(u.dates) ))) \\
-        ((* if u.filter_people(type="reviewer") | length *))
-          Review & ((( reviewers(u.people) ))) & ((( d.review_date(u.dates) ))) \\
-        ((* endif *))
+    ((* block version -*))
+      ((* for v in config.versions() -*))
+        ((* with c = config.at_version(v) -*))
+          Version ((( v ))) &%
+          ((( c.filter_people("author") | join(", ", attribute="name") | tex ))) &%
+          ((( d.publish_date(c.dates) ))) \\
+          ((* if c.filter_people("reviewer") | length -*))
+            Review &%
+            ((( c.filter_people("reviewer") | join(", ", attribute="name") | tex ))) &%
+            ((( d.review_date(c.dates) ))) \\
+          ((*- endif *))
+        ((*- endwith *))
       ((* endfor *))
+    ((*- endblock version *))
       \bottomrule
     \end{longtable}
-  ((*- endblock version -*))
 }
 
 \begin{document}
