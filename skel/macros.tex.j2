@@ -12,11 +12,3 @@
     \bottomrule
   \end{longtable}
 ((*- endmacro *))
-
-((* macro authors(people) -*))
-  ((( people | selectattr("type.value", "==", "author") | join(", ", "name") )))
-((*- endmacro *))
-
-((* macro reviewers(people) -*))
-  ((( people | selectattr("type.value", "==", "reviewer") | join(", ", "name") )))
-((*- endmacro *))

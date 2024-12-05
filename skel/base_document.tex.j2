@@ -1,5 +1,4 @@
 % ((( MANUAL_EDIT_WARNING )))
-((* from "macros.tex.j2" import authors, reviewers *))
 ((* import "dates.tex.j2" as d *))
 
 \documentclass{sereto}
@@ -18,7 +17,7 @@
 
 \author{
   ((*- block author -*))
-    ((( authors(people) )))
+    ((( c.filter_people("author") | join(", ", attribute="name") | tex )))
   ((*- endblock author -*))
 }
 
@@ -61,4 +60,20 @@
   \clearpage
   \appendix
   \printnoidxglossaries
+
+  ((* if people | length *))
+    \chapter{Contact information}
+
+      ((*- for bu, people_in_bu in c.filter_people(type=["author", "requestor", "technical_contact"], business_unit='.*') | groupby("business_unit") *))
+        \section{((( bu )))}
+        ((*- for person in people_in_bu *))
+          \begin{description}
+            \setlength\itemsep{0em}
+            \item[Name] ((( person.name | tex ))), \textit{((( person.role | tex )))}
+            \item[E-mail] \href{mailto:((( person.email | tex )))}{((( person.email | tex )))}\\
+          \end{description}
+        ((* endfor -*))
+      ((* endfor -*))
+  ((* endif *))
+
 \end{document}
