@@ -7,5 +7,6 @@
 
 
 ((* block content *))
-  ((* include target.uname + "/target.tex.j2" *))
+  \setcounter{chapter}{((( target_index )))}
+  ((* include target.uname + "/target" + version.path_suffix + ".tex.j2" *))
 ((* endblock content *))
