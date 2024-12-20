@@ -4,15 +4,13 @@
 \label{((( target.uname )))}
 
 
-The ((( target.name ))) is ((( lipsum(1, False) ))).
+The ((( target.name ))) is an application that ((( lipsum(1, False) ))).
 
 \section{Assigment}
 
 The penetration test focused on the following areas: ((( lipsum(1, False) )))
 
 ((* include target.uname + "/scope" + version.path_suffix + ".tex.j2" *))
-
-((* include target.uname + "/scenario" + version.path_suffix + ".tex.j2" *))
 
 ((* include target.uname + "/approach" + version.path_suffix + ".tex.j2" *))
 
@@ -24,9 +22,23 @@ The penetration test focused on the following areas: ((( lipsum(1, False) )))
   During the penetration test of the ((( target.name ))) target, we discovered ((( findings_cnt ))) ((* if findings_cnt > 1 -*)) vulnerabilities ((*- else -*)) vulnerability ((*- endif *)).
 
   \begin{center}
-    \includegraphics[width=\textwidth]{((( target.uname )))/risks.png}
+    \includegraphics[width=\textwidth]{((( project_path )))/.build/((( target.uname )))/risks.png}
   \end{center}
+((* else *))
+  During the penetration test of the ((( target.name ))) target, we were not able to locate any vulnerability within the scope of the assessment.
+((* endif -*))
 
+((* if target.source_code_analyzer_files | length > 0 *))
+  You can also see the information provided by the automatic scanner in the following files:
+
+  \begin{itemize}
+    ((* for file in target.source_code_analyzer_files *))
+      \item \nolinkurl{ (((- file | tex -))) }
+    ((* endfor *))
+  \end{itemize}
+((* endif *))
+
+((*- if findings_cnt > 0 *))
   The table below gives an overview of the vulnerabilities and the risk classification.
 
   ((( findings_table(target, version) )))
@@ -35,8 +47,6 @@ The penetration test focused on the following areas: ((( lipsum(1, False) )))
 
   ((* for finding_group in target.findings_config.finding_groups -*))
     \clearpage
-    ((* include target.uname + "/findings/" + finding_group.uname + ".tex.j2" *))
+    ((* include target.uname + "_" + finding_group.uname + version.path_suffix + ".tex.j2" *))
   ((* endfor -*))
-((* else *))
-  During the penetration test of the ((( target.name ))) target, we were not able to locate any vulnerability within the scope of the assessment.
 ((* endif -*))

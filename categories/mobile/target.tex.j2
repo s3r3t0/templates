@@ -4,7 +4,7 @@
 \label{((( target.uname )))}
 
 
-The ((( target.name ))) is an infrastructure that ((( lipsum(1, False) ))).
+The ((( target.name ))) is a mobile application that ((( lipsum(1, False) ))).
 
 \section{Assigment}
 
@@ -22,7 +22,7 @@ The penetration test focused on the following areas: ((( lipsum(1, False) )))
   During the penetration test of the ((( target.name ))) target, we discovered ((( findings_cnt ))) ((* if findings_cnt > 1 -*)) vulnerabilities ((*- else -*)) vulnerability ((*- endif *)).
 
   \begin{center}
-    \includegraphics[width=\textwidth]{((( target.uname )))/risks.png}
+    \includegraphics[width=\textwidth]{((( project_path )))/.build/((( target.uname )))/risks.png}
   \end{center}
 
   The table below gives an overview of the vulnerabilities and the risk classification.
@@ -33,7 +33,7 @@ The penetration test focused on the following areas: ((( lipsum(1, False) )))
 
   ((* for finding_group in target.findings_config.finding_groups -*))
     \clearpage
-    ((* include target.uname + "/findings/" + finding_group.uname + ".tex.j2" *))
+    ((* include target.uname + "_" + finding_group.uname + version.path_suffix + ".tex.j2" *))
   ((* endfor -*))
 ((* else *))
   During the penetration test of the ((( target.name ))) target, we were not able to locate any vulnerability within the scope of the assessment.
