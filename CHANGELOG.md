@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Adjust the templates to the new project directory structure.
+
 ## [0.0.6] - 2024-12-06
 
 ### Added

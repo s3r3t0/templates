@@ -8,7 +8,7 @@
 \RequirePackage{unicode-math}
 \RequirePackage{lmodern}
 % minted for code highlighting
-\RequirePackage[outputdir=.build_artifacts]{minted}
+\RequirePackage{minted}
 % colors
 \RequirePackage{xcolor}
 % page layout
@@ -111,7 +111,6 @@
 % graphics settings
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\graphicspath{{./pictures/}}
 \setkeys{Gin}{width=\textwidth,height=\maxheight,keepaspectratio}
 \floatplacement{figure}{H}
 
@@ -178,7 +177,6 @@
 \setglossarystyle{alttree}
 \setacronymstyle{long-short}
 \makenoidxglossaries
-\include{glossary}
 \glsfindwidesttoplevelname
 
 % version info
