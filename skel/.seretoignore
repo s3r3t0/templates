@@ -1,36 +1,11 @@
 # SeReTo
-.build_artifacts/
-source.tgz
+.build/
+pdf/
 
-# TeX auxiliary files
-*.aux
-*.lof
-*.log
-*.lot
-*.fls
-*.out
-*.toc
-*.fmt
-*.fot
-*.cb
-*.cb2
-.*.lb
-_minted*
-*.fdb_latexmk
 
-# Generated
-*.pdf
-*.tex
-
-# Other
-*/.git/**
-*/.gitmodules
-*/.gitattributes
-.vscode/
-
-# Exceptions
-!glossary.tex
-!pictures/*.pdf
+# ----------------------------
+# Exceptions - keep at the end
+# -----------------------------
 
 # Ensure core files are always present
 !.sereto

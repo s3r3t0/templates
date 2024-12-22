@@ -1,0 +1,14 @@
+((* extends "_base.tex.j2" *))
+
+
+((* block subtitle *))
+  Partial penetration test report -- ((( report_version | tex )))
+((* endblock subtitle *))
+
+
+((* block content *))
+  \setcounter{chapter}{((( target_index + 1 )))}
+  \setcounter{section}{2}  ((= Findings section =))
+  \setcounter{subsection}{((( finding_group_index )))}
+  ((* include target.uname + "_" + finding_group.uname + version.path_suffix + ".tex.j2" *))
+((* endblock content *))
