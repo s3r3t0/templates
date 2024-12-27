@@ -3,7 +3,8 @@
 
 ((* block content *))
 
-  \chapter{Management summary}
+  \chapter*{Management summary}
+  \addcontentsline{toc}{chapter}{\protect\numberline{}Management summary}
 
   The ((( c.filter_people(type="requestor") | join(", ", "name") | tex ))) engaged the ((( c.filter_people(type="author") | join(", ", "name") | tex ))) to perform a penetration test \enquote{((( name | tex )))} (reference number ((( id | tex )))) as:
 
