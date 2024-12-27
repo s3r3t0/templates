@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sereto}[2024/12/05 SeReTo LaTeX class]
+\ProvidesClass{sereto}[2024/12/27 SeReTo LaTeX class]
 
 \LoadClass[captions=tableheading]{scrbook}
 
@@ -177,7 +177,6 @@
 \setglossarystyle{alttree}
 \setacronymstyle{long-short}
 \makenoidxglossaries
-\glsfindwidesttoplevelname
 
 % version info
 \newcommand{\@versioninfo}{\relax}
