@@ -1,7 +1,11 @@
 % ((( MANUAL_EDIT_WARNING )))
 ((* import "dates.tex.j2" as d *))
 
-\documentclass{sereto}
+\documentclass{((( project_path )))/includes/sereto}
+\graphicspath{{((( project_path )))/pictures}}
+\renewcommand{\mintedpath}{((( project_path )))/outputs/}
+\include{((( project_path )))/includes/glossary}
+\glsfindwidesttoplevelname
 
 \title{
   ((*- block title -*))
