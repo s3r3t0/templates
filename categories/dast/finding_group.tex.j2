@@ -1,14 +1,19 @@
 \subsection{(((finding_group.name)))}
 
 \begin{tcolorbox}
-  \begin{longtable}{ r l }
-    Application or host
-    ((* for url in target.urls *))
-      & \nolinkurl{((( url )))}  \\
-    ((*- endfor *))
-    Risk & ((( finding_group.risks[version].value | capitalize ))) \\
-  \end{longtable}
+  \setlength{\labelsep}{\textwidth}
+  \begin{description}
+    \item[Application or host]
+      ((* for url in target.urls *))
+        \nolinkurl{ (((- url -))) } ((( "\\\\" if not loop.last )))
+      ((*- endfor *))
+    \item[Technical risk]
+      ((( finding_group.risks[version].value | capitalize )))
+    \item[Recommended due date]
+      \today
+  \end{description}
 \end{tcolorbox}
+\vskip\parsep
 
 ((* for finding in finding_group.findings *))
   ((* if finding_group.findings | length > 1 *))

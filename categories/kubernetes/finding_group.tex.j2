@@ -1,10 +1,15 @@
 \subsection{(((finding_group.name)))}
 
 \begin{tcolorbox}
-  \begin{longtable}{ r l }
-    Risk & ((( finding_group.risks[version].value | capitalize ))) \\
-  \end{longtable}
+  \setlength{\labelsep}{\textwidth}
+  \begin{description}
+    \item[Technical risk]
+      ((( finding_group.risks[version].value | capitalize )))
+    \item[Recommended due date]
+      \today
+  \end{description}
 \end{tcolorbox}
+\vskip\parsep
 
 ((* for finding in finding_group.findings *))
   ((* if finding_group.findings | length > 1 *))

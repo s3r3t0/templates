@@ -36,7 +36,7 @@
 \RequirePackage[default]{sourcesanspro}
 \RequirePackage{sourcecodepro}
 % color boxes
-\RequirePackage[breakable]{tcolorbox}
+\RequirePackage[many]{tcolorbox}
 % header and footer
 \RequirePackage[headsepline,footsepline]{scrlayer-scrpage}
 % lists
