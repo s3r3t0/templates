@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Linked finding sections from the summary table.
+
 ### Changed
 
 - Switched from tables to definition lists for the finding summaries.
