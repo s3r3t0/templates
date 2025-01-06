@@ -1,16 +1,33 @@
 #!/usr/bin/env python
-''' A pandoc filter that has the LaTeX writer use minted for typesetting code.
+''' A pandoc LaTeX filter for code highlighting with pygments.
 
 Usage:
     pandoc --filter ./minted.py -o myfile.tex myfile.md
 '''
 
-from string import Template
 from pandocfilters import toJSONFilter, RawBlock, RawInline
+from pygments import highlight
+from pygments.formatters import LatexFormatter
+from pygments.lexers import get_lexer_by_name
 
 
-def minted(key, value, format, meta):
-    ''' Use minted for code in LaTeX.
+def highlight_code(code, language):
+    ''' Highlight code with pygments.
+
+    Args:
+        code      source code to highlight
+        language  programming language of the source code
+    '''
+    try:
+        lexer = get_lexer_by_name(language, stripall=True)
+    except Exception:
+        lexer = get_lexer_by_name('text', stripall=True)
+    formatter = LatexFormatter()
+    return highlight(code, lexer, formatter)
+
+
+def verbatim(key, value, format, meta):
+    ''' Process verbatim objects.
 
     Args:
         key     type of pandoc object
@@ -21,40 +38,36 @@ def minted(key, value, format, meta):
     if format != 'latex':
         return
 
-    # Determine what kind of code object this is.
-    if key == 'CodeBlock':
-        template = Template(
-            '\\begin{minted}[$attr]{$l}\n$code\n\\end{minted}'
-        )
-        Element = RawBlock
-    elif key == 'Code':
-        template = Template('\\mintinline[$attr]{$l}|$code|')
-        Element = RawInline
-    else:
+    if key not in ['CodeBlock', 'Code']:
         return
 
     [[id, cls, kv], text] = value
 
-    # check if source is in file
-    attributes = []
-    for k, v in kv:
-        if k == 'source':
-            template = Template('\\inputminted[$attr]{$l}{\\mintedpath $code}')
-            Element = RawInline
-            text = v
-        else:
-            attributes.append(k + '={' + v + '}')
+    # Process attributes
+    attributes = dict(kv)
 
     language = cls[0] if len(cls) else 'text'
 
-    return [Element(format, template.substitute(attr=', '.join(attributes),
-                    l=language,
-                    code=text))]
+    # Determine what kind of code object this is.
+    if 'source' in attributes.keys():
+        # TODO: load code from file
+        text = r'\verb|' + str(attributes) + r'|'
+        Element = RawInline
+    elif key == 'CodeBlock':
+        Element = RawBlock
+        text = highlight_code(text, language)
+    elif key == 'Code':
+        text = r'\verb|' + text + r'|'
+        Element = RawInline
+    else:
+        return
+
+    return [Element(format, text)]
 
 
 def main():
     """cli entry point"""
-    toJSONFilter(minted)
+    toJSONFilter(verbatim)
 
 
 if __name__ == '__main__':
