@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sereto}[2024/12/27 SeReTo LaTeX class]
+\ProvidesClass{sereto}[2025/01/06 SeReTo LaTeX class]
 
 \LoadClass[captions=tableheading]{scrbook}
 
@@ -8,7 +8,7 @@
 \RequirePackage{unicode-math}
 \RequirePackage{lmodern}
 % fancy code highlighting
-\RequirePackage{fancyvrb}
+\RequirePackage{fvextra}
 % colors
 \RequirePackage{xcolor}
 % page layout
@@ -75,6 +75,8 @@
 
 % fancyvrb settings
 \fvset{
+  breaklines=true,
+  breakanywhere=true,
   numbers=left
 }
 \renewcommand{\theFancyVerbLine}{\color{code-numbers-color}\arabic{FancyVerbLine}}

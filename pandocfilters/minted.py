@@ -51,13 +51,13 @@ def verbatim(key, value, format, meta):
     # Determine what kind of code object this is.
     if 'source' in attributes.keys():
         # TODO: load code from file
-        text = r'\verb|' + str(attributes) + r'|'
+        text = r'\Verb|' + str(attributes) + r'|'
         Element = RawInline
     elif key == 'CodeBlock':
         Element = RawBlock
         text = highlight_code(text, language)
     elif key == 'Code':
-        text = r'\verb|' + text + r'|'
+        text = r'\Verb|' + text + r'|'
         Element = RawInline
     else:
         return
