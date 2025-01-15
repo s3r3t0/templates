@@ -26,7 +26,8 @@
 
 ((* block content *))
 
-  \chapter{Management summary}
+  \chapter*{Management summary}
+  \addcontentsline{toc}{chapter}{\protect\numberline{}Management summary}
 
   The ((( c.filter_people(type="requestor") | join(", ", "name") | tex ))) are engaging the ((( c.filter_people(type="author") | join(", ", "name") | tex ))) to perform a penetration test \enquote{((( name | tex )))} (reference number ((( id | tex )))) as:
 
@@ -52,6 +53,20 @@
     The engagement timeframe has not been specified.
   ((* endif *))
 
+The following prerequisites are essential for the successful completion of the penetration test.
+For more details see the \autoref{prerequisites}.
+
+\begin{itemize}
+\item[$\square$]
+  \hyperref[prerequisites:access]{Unrestricted access}
+\item[$\square$]
+  \hyperref[prerequisites:doc]{Full documentation}
+\item[$\square$]
+  \hyperref[prerequisites:env]{Staging environment}
+\item[$\square$]
+  \hyperref[prerequisites:code]{Code freeze}
+\end{itemize}
+
   ((*- for target in targets *))
     \chapter{((( target.name )))}
     \label{((( target.uname )))}
@@ -65,25 +80,32 @@
     ((* include target.uname + "/approach" + version.path_suffix + ".tex.j2" *))
 
   ((* endfor -*))
+((* endblock content *))
 
+((* block appendix *))
   \chapter{Prerequisites}
+  \label{prerequisites}
 
   The prerequisites mentioned in this chapter are required for the successful completion of the penetration test.
 
   \section{Access}
+  \label{prerequisites:access}
 
   ((( lipsum(1, False) )))
 
   \section{Documentation}
+  \label{prerequisites:doc}
 
   ((( lipsum(1, False) )))
 
   \section{Environment}
+  \label{prerequisites:env}
 
   ((( lipsum(1, False) )))
 
   \section{Code Freeze}
+  \label{prerequisites:code}
 
   ((( lipsum(1, False) )))
 
-((* endblock content *))
+((* endblock appendix *))

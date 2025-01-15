@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Switched from tables to definition lists for the finding summaries.
+- Unified document structure between report and statement of work.
 
 ## [0.1.0] - 2024-12-28
 
