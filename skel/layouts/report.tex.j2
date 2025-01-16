@@ -3,8 +3,8 @@
 
 ((* block content *))
 
-  \chapter*{Management summary}
-  \addcontentsline{toc}{chapter}{\protect\numberline{}Management summary}
+  \setcounter{secnumdepth}{-1}
+  \chapter{Management summary}
 
   The ((( c.filter_people(type="requestor") | join(", ", "name") | tex ))) engaged the ((( c.filter_people(type="author") | join(", ", "name") | tex ))) to perform a penetration test \enquote{((( name | tex )))} (reference number ((( id | tex )))) as:
 
@@ -29,6 +29,8 @@
   ((* else *))
     The engagement timeframe has not been specified.
   ((* endif *))
+
+  \setcounter{secnumdepth}{\tocdepth}
 
   ((*- for target in targets *))
     ((* include target.uname + version.path_suffix + ".tex.j2" *))

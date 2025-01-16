@@ -7,8 +7,10 @@
 
 
 ((* block content *))
-  \setcounter{chapter}{((( target_index + 1 )))}
-  \setcounter{section}{2}  ((= Findings section =))
+  \setcounter{chapter}{((( target_index )))}
+  \chapter{((( target.name )))}
+  \setcounter{section}{1}
+  \section{Findings}
   \setcounter{subsection}{((( finding_group_index )))}
   ((* include target.uname + "_" + finding_group.uname + version.path_suffix + ".tex.j2" *))
 ((* endblock content *))

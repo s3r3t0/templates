@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sereto}[2024/12/27 SeReTo LaTeX class]
+\ProvidesClass{sereto}[2025/01/16 SeReTo LaTeX class]
 
 \LoadClass[captions=tableheading]{scrbook}
 
@@ -120,7 +120,8 @@
             midpenalty=10}
 
 % heading settings
-\setcounter{secnumdepth}{2}
+\newcommand{\tocdepth}{2}
+\setcounter{secnumdepth}{\tocdepth}
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
   \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
