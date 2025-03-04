@@ -18,7 +18,7 @@
   ((* if finding_group.findings | length > 1 *))
     \begin{tcolorbox}[title={((( finding.name )))\hfill ( (((-  finding.risks[version].value | capitalize -))) )}]
   ((* endif *))
-    \input{((( project_path )))/.build/((( target.uname )))/((( finding.path_name )))((( version.path_suffix )))}
+    \input{((( project_path.as_posix() )))/.build/((( target.uname )))/((( finding.path_name )))((( version.path_suffix )))}
   ((* if finding_group.findings | length > 1 *))
     \end{tcolorbox}
   ((* endif *))

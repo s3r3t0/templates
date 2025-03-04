@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Linked finding sections from the summary table.
 
+### Fixed
+
+- Use posix paths for correct behavior on Windows.
+
 ### Changed
 
 - Switched from tables to definition lists for the finding summaries.
