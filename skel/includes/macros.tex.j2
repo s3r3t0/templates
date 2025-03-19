@@ -4,10 +4,10 @@
     ID & Vulnerability description & Risk \\
     \midrule
     \endhead
-    ((* for finding_group in target.findings_config.finding_groups -*))
+    ((* for finding_group in target.findings.groups -*))
       ((( loop.index ))) & %
         \hyperref[((( target.uname + "_" + finding_group.uname )))]{((( finding_group.name |tex )))} & %
-        ((( finding_group.risks[version] | capitalize | tex ))) \\
+        ((( finding_group.risk | capitalize | tex ))) \\
     ((* endfor -*))
     \bottomrule
   \end{longtable}

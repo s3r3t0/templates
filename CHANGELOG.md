@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2025-03-19
+
 ### Added
 
 - Linked finding sections from the summary table.
@@ -14,11 +16,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Use posix paths for correct behavior on Windows.
+- Modified the variable names for compatibility with the new structure.
 
 ### Changed
 
 - Switched from tables to definition lists for the finding summaries.
 - Unified document structure between report and statement of work.
+
+### Removed
+
+- Removed date macros in favor of the built-in `date` filter.
 
 ## [0.1.0] - 2024-12-28
 
@@ -80,7 +87,8 @@ Added support for cicd, kubernetes, mobile, infrastructure, portal, and sast cat
 
 Initial version
 
-[Unreleased]: https://github.com/s3r3t0/templates/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/s3r3t0/templates/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/s3r3t0/templates/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/s3r3t0/templates/compare/v0.0.6...v0.1.0
 [0.0.6]: https://github.com/s3r3t0/templates/compare/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/s3r3t0/templates/compare/v0.0.4...v0.0.5

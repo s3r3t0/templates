@@ -2,15 +2,15 @@
 
 
 ((* block subtitle *))
-  Partial penetration test report -- ((( report_version | tex )))
+  Partial penetration test report -- ((( version | tex )))
 ((* endblock subtitle *))
 
 
 ((* block content *))
   \setcounter{chapter}{((( target_index )))}
-  \chapter{((( target.name )))}
+  \chapter{((( target.data.name | tex )))}
   \setcounter{section}{1}
   \section{Findings}
   \setcounter{subsection}{((( finding_group_index )))}
-  ((* include target.uname + "_" + finding_group.uname + version.path_suffix + ".tex.j2" *))
+  ((* include target.uname + "_" + finding_group.uname + ".tex.j2" *))
 ((* endblock content *))

@@ -1,27 +1,25 @@
 ((* from "macros.tex.j2" import findings_table *))
 
-\chapter{((( target.name )))}
+\chapter{((( target.data.name )))}
 \label{((( target.uname )))}
 
 
-The ((( target.name ))) is ((( lipsum(1, False) ))).
+The ((( target.data.name ))) is ((( lipsum(1, False) ))).
 
-\section{Assigment}
+\section{Assignment}
 
 The penetration test focused on the following areas: ((( lipsum(1, False) )))
 
-((* include target.uname + "/scope" + version.path_suffix + ".tex.j2" *))
+((* include target.uname + "/scope.tex.j2" *))
 
-((* include target.uname + "/scenario" + version.path_suffix + ".tex.j2" *))
+((* include target.uname + "/scenario.tex.j2" *))
 
-((* include target.uname + "/approach" + version.path_suffix + ".tex.j2" *))
+((* include target.uname + "/approach.tex.j2" *))
 
 \section{Findings}
 
-((*- set findings_cnt = target.findings_config.finding_groups |length *))
-
-((*- if findings_cnt > 0 *))
-  During the penetration test of the ((( target.name ))) target, we discovered ((( findings_cnt ))) ((* if findings_cnt > 1 -*)) vulnerabilities ((*- else -*)) vulnerability ((*- endif *)).
+((*- if target.findings.risks.sum_open > 0 *))
+  During the penetration test of the ((( target.data.name ))) target, we discovered ((( target.findings.risks.sum_open ))) ((* if target.findings.risks.sum_open > 1 -*)) vulnerabilities ((*- else -*)) vulnerability ((*- endif *)).
 
   \begin{center}
     \includegraphics[width=\textwidth]{((( project_path.as_posix() )))/.build/((( target.uname )))/risks.png}
@@ -33,10 +31,10 @@ The penetration test focused on the following areas: ((( lipsum(1, False) )))
 
   You may find the technical description of the discovered vulnerabilities and mitigation recommendation in the following sections.
 
-  ((* for finding_group in target.findings_config.finding_groups -*))
+  ((* for finding_group in target.findings.groups -*))
     \clearpage
-    ((* include target.uname + "_" + finding_group.uname + version.path_suffix + ".tex.j2" *))
+    ((* include target.uname + "_" + finding_group.uname + ".tex.j2" *))
   ((* endfor -*))
 ((* else *))
-  During the penetration test of the ((( target.name ))) target, we were not able to locate any vulnerability within the scope of the assessment.
+  During the penetration test of the ((( target.data.name ))) target, we were not able to locate any vulnerability within the scope of the assessment.
 ((* endif -*))

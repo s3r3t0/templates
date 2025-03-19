@@ -2,11 +2,11 @@
 
 
 ((* block subtitle *))
-  Partial penetration test report -- ((( report_version | tex )))
+  Partial penetration test report -- ((( version | tex )))
 ((* endblock subtitle *))
 
 
 ((* block content *))
   \setcounter{chapter}{((( target_index )))}
-  ((* include target.uname + version.path_suffix + ".tex.j2" *))
+  ((* include target.uname + ".tex.j2" *))
 ((* endblock content *))

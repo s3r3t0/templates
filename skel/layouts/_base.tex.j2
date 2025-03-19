@@ -1,6 +1,4 @@
 % ((( MANUAL_EDIT_WARNING )))
-((* import "dates.tex.j2" as d *))
-
 \documentclass{((( project_path.as_posix() )))/includes/sereto}
 \graphicspath{{((( project_path.as_posix() )))/pictures}}
 \renewcommand{\mintedpath}{((( project_path.as_posix() )))/outputs/}
@@ -9,7 +7,7 @@
 
 \title{
   ((*- block title -*))
-    ((( id | tex ))) -- ((( name | tex )))
+    ((( c.id | tex ))) -- ((( c.name | tex )))
   ((*- endblock title -*))
 }
 
@@ -27,7 +25,7 @@
 
 \date{
   ((*- block date -*))
-    ((( d.publish_date(dates) )))
+    ((( c.report_sent_date | tex )))
   ((*- endblock date -*))
 }
 
@@ -38,17 +36,17 @@
     \midrule
     \endhead
     ((* block version -*))
-      ((* for v in config.versions() -*))
+      ((* for v in config.versions -*))
         ((* with c = config.at_version(v) -*))
-          ((( v ))) &%
-          ((( c.version_description ))) &%
+          ((( v | tex ))) &%
+          ((( c.version_description | tex ))) &%
           ((( c.filter_people("author") | join(", ", attribute="name") | tex ))) &%
-          ((( d.publish_date(c.dates) ))) \\
+          ((( c.report_sent_date | tex ))) \\
           ((* if c.filter_people("reviewer") | length -*))
             &%
             Review &%
             ((( c.filter_people("reviewer") | join(", ", attribute="name") | tex ))) &%
-            ((( d.review_date(c.dates) ))) \\
+            ((( c.filter_dates(type="review", last_date=True) | tex ))) \\
           ((*- endif *))
         ((*- endwith *))
       ((* endfor *))
@@ -68,16 +66,16 @@
 
   ((* block appendix *))((* endblock *))
 
-  ((* if people | length *))
+  ((* if c.people | length *))
     \chapter{Contact information}
 
       ((*- for bu, people_in_bu in c.filter_people(type=["author", "requestor", "technical_contact"], business_unit='.*') | groupby("business_unit") *))
-        \section{((( bu )))}
+        \section{((( bu | tex )))}
         ((*- for person in people_in_bu *))
           \begin{description}
             \setlength\itemsep{0em}
             \item[Name] ((( person.name | tex ))), \textit{((( person.role | tex )))}
-            \item[E-mail] \href{mailto:((( person.email | tex )))}{((( person.email | tex )))}\\
+            \item[E-mail] \href{mailto:((( person.email )))}{((( person.email | tex )))}\\
           \end{description}
         ((* endfor -*))
       ((* endfor -*))

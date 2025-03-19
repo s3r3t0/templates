@@ -7,18 +7,18 @@
 
 
 ((*- block date -*))
-  ((( c.filter_dates("sow_sent") | last | default("n/a") | tex )))
+  ((( c.filter_dates("sow_sent", last_date=True) | tex )))
 ((*- endblock date -*))
 
 
 ((* block version -*))
   % Version & Description & Author & Date \\
-  ((* for v in config.versions() -*))
+  ((* for v in config.versions -*))
     ((* with c = config.at_version(v) -*))
-      ((( v ))) &%
-      ((( c.version_description ))) &%
+      ((( v | tex ))) &%
+      ((( c.version_description | tex ))) &%
       ((( c.filter_people("author") | join(", ", attribute="name") | tex ))) &%
-      ((( c.filter_dates("sow_sent") | last | default("n/a") | tex ))) \\
+      ((( c.filter_dates("sow_sent", last_date=True) | tex ))) \\
     ((*- endwith *))
   ((*- endfor *))
 ((*- endblock version *))
@@ -29,12 +29,12 @@
   \setcounter{secnumdepth}{-1}
   \chapter{Management summary}
 
-  The ((( c.filter_people(type="requestor") | join(", ", "name") | tex ))) are engaging the ((( c.filter_people(type="author") | join(", ", "name") | tex ))) to perform a penetration test \enquote{((( name | tex )))} (reference number ((( id | tex )))) as:
+  The ((( c.filter_people(type="requestor") | join(", ", "name") | tex ))) are engaging the ((( c.filter_people(type="author") | join(", ", "name") | tex ))) to perform a penetration test \enquote{((( c.name | tex )))} (reference number ((( c.id | tex )))) as:
 
-  ((* if targets | length *))
+  ((* if c.targets | length *))
     \begin{itemize}
-    ((* for target in targets *))
-      \item ((( target.category | upper | tex ))) test of the \hyperref[((( target.uname )))]{((( target.name | tex )))} target
+    ((* for t in c.targets *))
+      \item ((( t.data.category | upper | tex ))) test of the \hyperref[((( t.uname )))]{((( t.data.name | tex )))} target
     ((* endfor *))
     \end{itemize}
   ((* else *))
@@ -46,7 +46,7 @@
 
     \begin{itemize}
     ((* for date in c.filter_dates(type="pentest_ongoing") *))
-      \item ((( date )))
+      \item ((( date | tex )))
     ((* endfor *))
     \end{itemize}
   ((* else *))
@@ -69,17 +69,17 @@
 
   \setcounter{secnumdepth}{\tocdepth}
 
-  ((*- for target in targets *))
-    \chapter{((( target.name )))}
+  ((*- for target in c.targets *))
+    \chapter{((( target.data.name | tex )))}
     \label{((( target.uname )))}
 
     \section{Assigment}
 
-    This section describes the details of the assignment for the ((( target.name ))) target.
+    This section describes the details of the assignment for the ((( target.data.name | tex ))) target.
 
-    ((* include target.uname + "/scope" + version.path_suffix + ".tex.j2" *))
+    ((* include target.uname + "/scope.tex.j2" *))
 
-    ((* include target.uname + "/approach" + version.path_suffix + ".tex.j2" *))
+    ((* include target.uname + "/approach.tex.j2" *))
 
   ((* endfor -*))
 ((* endblock content *))

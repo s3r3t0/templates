@@ -6,12 +6,12 @@
   \setcounter{secnumdepth}{-1}
   \chapter{Management summary}
 
-  The ((( c.filter_people(type="requestor") | join(", ", "name") | tex ))) engaged the ((( c.filter_people(type="author") | join(", ", "name") | tex ))) to perform a penetration test \enquote{((( name | tex )))} (reference number ((( id | tex )))) as:
+  The ((( c.filter_people(type="requestor") | join(", ", "name") | tex ))) engaged the ((( c.filter_people(type="author") | join(", ", "name") | tex ))) to perform a penetration test \enquote{((( c.name | tex )))} (reference number ((( c.id | tex )))) as:
 
-  ((* if targets | length *))
+  ((* if c.targets | length *))
     \begin{itemize}
-    ((* for target in targets *))
-      \item ((( target.category | upper | tex ))) test of the \hyperref[((( target.uname )))]{((( target.name | tex )))} target
+    ((* for t in c.targets *))
+      \item ((( t.data.category | upper | tex ))) test of the \hyperref[((( t.uname )))]{((( t.data.name | tex )))} target
     ((* endfor *))
     \end{itemize}
   ((* else *))
@@ -23,7 +23,7 @@
 
     \begin{itemize}
     ((* for date in c.filter_dates(type="pentest_ongoing") *))
-      \item ((( date )))
+      \item ((( date | tex )))
     ((* endfor *))
     \end{itemize}
   ((* else *))
@@ -32,8 +32,8 @@
 
   \setcounter{secnumdepth}{\tocdepth}
 
-  ((*- for target in targets *))
-    ((* include target.uname + version.path_suffix + ".tex.j2" *))
+  ((*- for target in c.targets *))
+    ((* include target.uname + ".tex.j2" *))
   ((* endfor -*))
 
 ((* endblock content *))

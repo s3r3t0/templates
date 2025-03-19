@@ -1,0 +1,19 @@
+############################################################
+#    Select findings you want to include in the report     #
+#----------------------------------------------------------#
+# ["Finding Group One"]                                    #
+# findings = ["dast_finding_1"]                            #
+# risk = "high"                                            #
+#                                                          #
+# ["Finding Group Two"]                                    #
+# findings = ["sast_finding_1", "sast_finding_2"]          #
+#                                                          #
+# ["Finding Group Three"]                                  #
+# findings = [                                             #
+#   "dast_finding_2",                                      #
+#   "dast_finding_3",                                      #
+#   "sast_finding_3"                                       #
+# ]                                                        #
+# ---------------------------------------------------------#
+# risk is optional, defaults to highest risk in group      #
+############################################################
