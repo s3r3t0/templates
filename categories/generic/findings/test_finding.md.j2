@@ -8,10 +8,6 @@ name = "images"
 description = "Screenshots showing proof of a vulnerability"
 required = true
 list = true
-
-[[variables]]
-name = "output"
-description = "File with long output from some tool"
 +++
 
 
@@ -28,9 +24,11 @@ Iure eum debitis nam impedit. Eaque id est ab non nihil.
  
 Quibusdam quae aut incidunt mollitia ut. Aut commodi nisi id officiis ea non.
 
-{% if f.vars.output -%}
-    ` `{source={{f.vars.output}}}
-{% endif %}
+```http
+GET / HTTP/2
+Host: example.com
+Connection: close
+```
 
 Molestiae vitae qui impedit provident sit corrupti occaecati repellat et. Id nesciunt enim nam.
 

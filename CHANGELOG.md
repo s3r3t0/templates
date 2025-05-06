@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Verbatim filter for pandoc.
 
+### Changed
+
+- There is only one test finding in generic category.
+
 ## [0.2.0] - 2025-03-19
 
 ### Added
