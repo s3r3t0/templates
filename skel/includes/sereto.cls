@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sereto}[2025/01/16 SeReTo LaTeX class]
+\ProvidesClass{sereto}[2025/05/26 SeReTo LaTeX class]
 
 \LoadClass[captions=tableheading]{scrbook}
 
@@ -7,8 +7,8 @@
 \RequirePackage{setspace}
 \RequirePackage{unicode-math}
 \RequirePackage{lmodern}
-% minted for code highlighting
-\RequirePackage{minted}
+% fancy code highlighting
+\RequirePackage{fvextra}
 % colors
 \RequirePackage{xcolor}
 % page layout
@@ -73,9 +73,8 @@
 % colorbox settings
 \tcbset{breakable}
 
-% minted settings
-\setminted{
-  autogobble=true,
+% verbatim settings
+\fvset{
   breaklines=true,
   breakanywhere=true,
   linenos=true,
@@ -83,10 +82,8 @@
   showspaces=false,
   showtabs=false,
 }
-%\setmintedinline{fontsize=\normalsize}
-\newcommand{\mintedpath}{./outputs/}
 \renewcommand{\theFancyVerbLine}{\color{code-numbers-color}\arabic{FancyVerbLine}}
-\newtcolorbox{mintedbox}{
+\newtcolorbox{vrbbox}{
   colback=code-bg-color,
   colframe=code-border-color,
   boxrule=0.5pt,
@@ -96,17 +93,8 @@
   right=0.4em,
   breakable,
 }
-\BeforeBeginEnvironment{minted}{\begin{mintedbox}}
-\AfterEndEnvironment{minted}{\end{mintedbox}}
-\renewcommand{\inputminted}[3][]{%
-  \begin{mintedbox}
-    \begingroup
-    \minted@configlang{#2}%
-    \setkeys{minted@opt@cmd}{#1}%
-    \minted@fvset
-    \minted@pygmentize[#3]{#2}%
-    \endgroup
-  \end{mintedbox}}
+\BeforeBeginEnvironment{Verbatim}{\begin{vrbbox}}
+\AfterEndEnvironment{Verbatim}{\end{vrbbox}}
 
 % graphics settings
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
