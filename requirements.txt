@@ -1,0 +1,2 @@
+sereto~=0.2.6
+click

@@ -7,13 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-
-- Verbatim filter for pandoc.
-
 ### Changed
 
 - There is only one test finding in generic category.
+- Switched from minted to fvextra for code highlighting.
 
 ## [0.2.0] - 2025-03-19
 
