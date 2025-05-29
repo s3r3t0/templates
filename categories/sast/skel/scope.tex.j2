@@ -9,6 +9,12 @@ The scope of the static application test was limited to the scope given below.
     ((( target.data.code_origin | tex ))) \\
   Source code origin & %
     ((( target.data.code_origin_name | tex ))) \\
+  ((* if target.data.locators | length -*))
+    Location
+    ((*- for loc in target.data.locators *))
+      & \nolinkurl{((( loc | tex )))} \\
+    ((* endfor *))
+  ((*- endif *))
   \bottomrule
 \end{longtable}
 

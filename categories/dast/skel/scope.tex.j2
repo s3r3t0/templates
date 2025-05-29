@@ -17,10 +17,10 @@
 \begin{longtable}{ r l }
   \toprule
   Name of the target & ((( target.data.name ))) \\
-  ((* if target.data.urls | length -*))
+  ((* if target.data.locators | length -*))
     Target \acp{url}
-    ((*- for url in target.data.urls *))
-      & \nolinkurl{((( url | tex )))} \\
+    ((*- for loc in target.data.locators *))
+      & \nolinkurl{((( loc | tex )))} \\
     ((* endfor *))
   ((*- endif *))
   ((* if target.data.dst_ips_dynamic -*))

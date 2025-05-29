@@ -5,5 +5,11 @@ The scope of the penetration test was limited to the scope given below.
 \begin{longtable}{ r l }
   \toprule
   Name of the target & ((( target.data.name ))) \\
+  ((* if target.data.locators | length -*))
+    Target application
+    ((*- for loc in target.data.locators *))
+      & \nolinkurl{((( loc | tex )))} \\
+    ((* endfor *))
+  ((*- endif *))
   \bottomrule
 \end{longtable}
