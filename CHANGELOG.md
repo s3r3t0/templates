@@ -10,11 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added graphics filter for better image handling.
+- Added header for subfindings.
+- Utilized the locators property to improve details in the finding header.
+- Added recommended dates for fixing findings.
 
 ### Changed
 
 - There is only one test finding in generic category.
 - Switched from minted to fvextra for code highlighting.
+- Moved the finding header to macro to ensure consistency across categories.
 
 ## [0.2.0] - 2025-03-19
 

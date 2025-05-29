@@ -1,14 +1,37 @@
-((* macro findings_table(target, version) -*))
-  \begin{longtable}{ r l l }
+((* macro findings_table(target, config) -*))
+  \begin{longtable}{ r l l l }
     \toprule
-    ID & Vulnerability description & Risk \\
+    ID & Vulnerability description & Risk & Due date \\
     \midrule
     \endhead
     ((* for finding_group in target.findings.groups -*))
       ((( loop.index ))) & %
-        \hyperref[((( target.uname + "_" + finding_group.uname )))]{((( finding_group.name |tex )))} & %
-        ((( finding_group.risk | capitalize | tex ))) \\
+        \hyperref[ (((- target.uname + "_" + finding_group.uname -))) ]{ (((- finding_group.name | tex -))) } & %
+        ((( finding_group.risk | capitalize | tex ))) & %
+      ((( config.due_date_for(finding_group.risk) | default('', true) ))) \\
     ((* endfor -*))
     \bottomrule
   \end{longtable}
+((*- endmacro *))
+
+((* macro finding_details(risk, locators=[], locators_title="Location", details=none) -*))
+  \setlength{\labelsep}{\textwidth}
+  \begin{description}
+    ((*- if locators | length > 0 *))
+    \item[((( locators_title | tex )))]
+      ((* for loc in locators -*))
+        \Verb| (((- loc -))) | ((( "\\\\" if not loop.last )))
+      ((*- endfor *))
+    ((*- endif *))
+    \item[Technical Risk]
+      ((( risk | capitalize | tex )))
+    ((*- if details is not none *))
+      ((* for key, value in details | items -*))
+        ((* if value *))
+          \item[((( key | tex )))]
+            ((( value | tex )))
+        ((* endif *))
+      ((* endfor *))
+    ((*- endif *))
+  \end{description}
 ((*- endmacro *))
