@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added header for subfindings.
 - Utilized the locators property to improve details in the finding header and target scope.
 - Added recommended dates for fixing findings.
+- Added debug template.
 
 ### Changed
 
