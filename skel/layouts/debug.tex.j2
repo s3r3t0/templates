@@ -1,0 +1,98 @@
+((* extends "_base.tex.j2" *))
+
+
+((*- block subtitle -*))
+  Debugging template
+((*- endblock subtitle -*))
+
+
+((* block content *))
+
+  \chapter{Debug}
+
+  \begin{Verbatim}
+  ((* debug *))
+  \end{Verbatim}
+
+  \chapter{Config}
+
+  \begin{Verbatim}
+  ((( config | pprint )))
+  \end{Verbatim}
+
+  \section{Current version}
+
+  \begin{Verbatim}
+  ((( c | pprint )))
+  \end{Verbatim}
+
+  ((* for v in config.versions *))
+    ((* with c = config.at_version(v) *))
+      \subsection{Version ((( v | tex )))}
+
+      \begin{Verbatim}
+      ((( c | pprint )))
+      \end{Verbatim}
+    ((* endwith *))
+  ((* endfor *))
+
+  \chapter{People}
+
+  \begin{Verbatim}
+  ((( c.people | pprint )))
+  \end{Verbatim}
+
+  ((* for person in c.people *))
+    \section{Person ((( person.name | tex )))}
+
+    \begin{Verbatim}
+    ((( person | pprint )))
+    \end{Verbatim}
+  ((* endfor *))
+
+  \chapter{Dates}
+
+  ((* for date in c.dates *))
+
+    \begin{Verbatim}
+    ((( date | pprint )))
+    \end{Verbatim}
+  ((* endfor *))
+
+  \chapter{Targets}
+
+  \begin{Verbatim}
+  ((( c.targets | pprint )))
+  \end{Verbatim}
+
+  ((* for target in c.targets *))
+    \section{Target ((( target.data.name | tex )))}
+
+    \begin{Verbatim}
+    ((( target | pprint )))
+    \end{Verbatim}
+  ((* endfor *))
+
+  \chapter{Findings}
+
+  ((* for target in c.targets *))
+    \section{Target ((( target.data.name | tex ))) Findings}
+
+    ((* for finding_group in target.findings.groups *))
+      \begin{Verbatim}
+      ((( finding_group | pprint )))
+      \end{Verbatim}
+    ((* endfor *))
+
+    ((* for finding_group in target.findings.groups *))
+      \subsection{Finding Group ((( finding_group.name | tex )))}
+
+      ((* for finding in finding_group.sub_findings *))
+        \begin{Verbatim}
+        ((( finding | pprint )))
+        \end{Verbatim}
+      ((* endfor *))
+    ((* endfor *))
+  ((* endfor *))
+
+((* endblock content *))
