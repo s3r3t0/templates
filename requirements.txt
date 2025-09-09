@@ -1,2 +1,2 @@
-sereto~=0.2.9
+sereto
 click
