@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added target ID to the scope section and target listing in the report and statement of work layouts.
+
 ### Changed
 
 - Use the locators new structure in the templates.

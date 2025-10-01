@@ -12,6 +12,9 @@
     \begin{itemize}
     ((* for t in c.targets *))
       \item ((( t.data.category | upper | tex ))) test of the \hyperref[((( t.uname )))]{((( t.data.name | tex )))} target
+      ((* if t.data.id -*))
+        ( (((- t.data.id | tex -))) )
+      ((*- endif *))
     ((* endfor *))
     \end{itemize}
   ((* else *))

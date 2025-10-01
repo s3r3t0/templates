@@ -17,6 +17,9 @@
 \begin{longtable}{ r l }
   \toprule
   Name of the target & ((( target.data.name ))) \\
+  ((* if target.data.id -*))
+    Target ID & ((( target.data.id | tex ))) \\
+  ((*- endif *))
   ((* if target.data.locators | length -*))
     Target \acp{url}
     ((*- for url in target.filter_locators("url") *))

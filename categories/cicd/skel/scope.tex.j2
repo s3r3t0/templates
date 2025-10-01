@@ -5,6 +5,9 @@ The scope of the penetration test was limited to the scope given below.
 \begin{longtable}{ r l }
   \toprule
   Name of the target & ((( target.data.name ))) \\
+  ((* if target.data.id -*))
+    Target ID & ((( target.data.id | tex ))) \\
+  ((*- endif *))
   ((* if target.data.locators | length -*))
     Target pipelines
     ((*- for loc in target.data.locators *))

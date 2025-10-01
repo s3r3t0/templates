@@ -5,6 +5,9 @@ The scope of the static application test was limited to the scope given below.
 \begin{longtable}{ r l }
   \toprule
   Name of the target & ((( target.data.name | tex ))) \\
+  ((* if target.data.id -*))
+    Target ID & ((( target.data.id | tex ))) \\
+  ((*- endif *))
   Source code provider & %
     ((( target.data.code_origin | tex ))) \\
   Source code origin & %

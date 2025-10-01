@@ -5,6 +5,9 @@ The vulnerabilities discovered by the security researcher were found at the foll
 \begin{longtable}{ r l }
   \toprule
   Name of the target & ((( target.data.name ))) \\
+  ((* if target.data.id -*))
+    Target ID & ((( target.data.id | tex ))) \\
+  ((*- endif *))
   ((* if target.data.locators | length -*))
     Target hosts
     ((*- for loc in target.data.locators *))
