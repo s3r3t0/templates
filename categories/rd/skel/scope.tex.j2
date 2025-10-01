@@ -8,7 +8,7 @@ The vulnerabilities discovered by the security researcher were found at the foll
   ((* if target.data.locators | length -*))
     Target hosts
     ((*- for loc in target.data.locators *))
-      & \nolinkurl{((( loc | tex )))} \\
+      & \nolinkurl{((( loc.value | tex )))} \\
     ((* endfor *))
   ((*- endif *))
   \bottomrule

@@ -8,7 +8,7 @@ The scope of the penetration test was limited to the scope given below.
   ((* if target.data.locators | length -*))
     Target pipelines
     ((*- for loc in target.data.locators *))
-      & \nolinkurl{((( loc | tex )))} \\
+      & \nolinkurl{((( loc.value | tex )))} \\
     ((* endfor *))
   ((*- endif *))
   \bottomrule

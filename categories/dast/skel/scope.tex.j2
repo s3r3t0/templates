@@ -19,18 +19,19 @@
   Name of the target & ((( target.data.name ))) \\
   ((* if target.data.locators | length -*))
     Target \acp{url}
-    ((*- for loc in target.data.locators *))
-      & \nolinkurl{((( loc | tex )))} \\
+    ((*- for url in target.filter_locators("url") *))
+      & \nolinkurl{((( url.value | tex )))} \\
     ((* endfor *))
   ((*- endif *))
   ((* if target.data.dst_ips_dynamic -*))
     Target \acp{ip} & Dynamic ( (((- target.data.dst_ips_dynamic_details -))) ) \\
-  ((* endif -*))
-  ((* if target.data.dst_ips | length -*))
-    Target \acp{ip}
-    ((* for ip in target.data.dst_ips *))
-      & \nolinkurl{((( ip | tex )))} \\
-    ((* endfor *))
+  ((* else -*))
+    ((* if target.data.dst_ips | length -*))
+      Target \acp{ip}
+      ((* for ip in target.filter_locators("ip") *))
+        & \nolinkurl{((( ip | tex )))} \\
+      ((* endfor *))
+    ((*- endif *))
   ((*- endif *))
   Environment & ((( target.data.environment | capitalize ))) \\
   ((* if target.data.src_ips | length -*))

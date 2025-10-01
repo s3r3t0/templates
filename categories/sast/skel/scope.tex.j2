@@ -12,7 +12,7 @@ The scope of the static application test was limited to the scope given below.
   ((* if target.data.locators | length -*))
     Location
     ((*- for loc in target.data.locators *))
-      & \nolinkurl{((( loc | tex )))} \\
+      & \nolinkurl{((( loc.value | tex )))} \\
     ((* endfor *))
   ((*- endif *))
   \bottomrule
@@ -26,4 +26,3 @@ The scope of the static application test was limited to the scope given below.
     ((* endfor *))
   \end{description}
 ((* endif *))
-

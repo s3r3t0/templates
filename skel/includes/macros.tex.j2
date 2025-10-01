@@ -20,7 +20,7 @@
     ((*- if locators | length > 0 *))
     \item[((( locators_title | tex )))]
       ((* for loc in locators -*))
-        \Verb| (((- loc -))) | ((( "\\\\" if not loop.last )))
+        \Verb| (((- loc.value -))) | ((( "\\\\" if not loop.last )))
       ((*- endfor *))
     ((*- endif *))
     \item[Technical Risk]
