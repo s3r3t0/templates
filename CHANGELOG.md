@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2025-10-01
+
 ### Added
 
 - Added target ID to the scope section and target listing in the report and statement of work layouts.
@@ -18,6 +20,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Use the locators new structure in the templates.
+
+### Removed
+
+- Removed SeReTo version pin from the requirements.
 
 ## [0.2.1] - 2025-06-02
 
@@ -116,7 +122,8 @@ Added support for cicd, kubernetes, mobile, infrastructure, portal, and sast cat
 
 Initial version
 
-[Unreleased]: https://github.com/s3r3t0/templates/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/s3r3t0/templates/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/s3r3t0/templates/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/s3r3t0/templates/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/s3r3t0/templates/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/s3r3t0/templates/compare/v0.0.6...v0.1.0
