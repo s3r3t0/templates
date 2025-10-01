@@ -13,7 +13,7 @@
 
 ((* block version -*))
   % Version & Description & Author & Date \\
-  ((* for v in config.versions -*))
+  ((* for v in config.versions if v <= version -*))
     ((* with c = config.at_version(v) -*))
       ((( v | tex ))) &%
       ((( c.version_description | tex ))) &%
