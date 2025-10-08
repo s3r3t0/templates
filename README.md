@@ -94,7 +94,7 @@ The style is inspired by the [Eisvogel] pandoc LaTeX template.
 
 [SeReTo]: https://github.com/s3r3t0/sereto
 [Eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template
-[install]: https://sereto.s4n.cz/getting_started/installation/
+[install]: https://sereto.s4n.cz/latest/getting_started/installation/
 [template]: https://github.com/new?template_name=templates&template_owner=s3r3t0
 [semver]: https://semver.org
 [tags]: https://github.com/s3r3t0/templates/tags
