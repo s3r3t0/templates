@@ -16,7 +16,6 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/s3r3t0/templates)
 
 [![Debian package](https://img.shields.io/debian/v/pandoc?label=pandoc)][pandoc-manual]
-[![Fedora package](https://img.shields.io/fedora/v/pandoc?label=pandoc)][pandoc-manual]
 [![jinja2 version](https://img.shields.io/badge/jinja2-v3.1.0-blue)](https://jinja.palletsprojects.com/en/stable/)
 
 A basic template structure for documents created with the [Security Reporting Tool (SeReTo)][SeReTo].
