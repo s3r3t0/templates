@@ -29,7 +29,7 @@
   ((* if target.data.dst_ips_dynamic -*))
     Target \acp{ip} & Dynamic ( (((- target.data.dst_ips_dynamic_details -))) ) \\
   ((* else -*))
-    ((* if target.data.dst_ips | length -*))
+    ((* if target.filter_locators("ip") | length -*))
       Target \acp{ip}
       ((* for ip in target.filter_locators("ip") *))
         & \nolinkurl{((( ip | tex )))} \\
