@@ -30,6 +30,7 @@ The style is inspired by the [Eisvogel] pandoc LaTeX template.
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Installing](#installing)
+    - [Installing SeReTo with the templates requirements](#installing-sereto-with-the-templates-requirements)
   - [Versioning](#versioning)
   - [License](#license)
   - [FAQ](#faq)
@@ -57,6 +58,14 @@ tar -xzvf /tmp/sereto_templates "$HOME/sereto_templates"
 ```
 
 You will be prompted to configure the template path when you run the [SeReTo] for the first time.
+
+### Installing SeReTo with the templates requirements
+
+You can install the [SeReTo] and the requirements for the templates plugins with a single command:
+
+```bash
+uv tool install sereto@latest --with-requirements requirements.txt
+```
 
 ## Versioning
 
