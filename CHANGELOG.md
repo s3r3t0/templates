@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - DAST finding: Cookies without Security Flags Set
 
+### Fixed
+
+- Show headings for optional sections (impact, recommendation, references) only if they contain content.
+
 ## [0.4.0] - 2025-10-08
 
 ### Changed
