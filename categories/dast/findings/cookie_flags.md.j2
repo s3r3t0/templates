@@ -1,0 +1,153 @@
++++
+name = "Cookies without Security Flags Set"
+risk = "low"
+keywords = ["v5.0-3.3", "cookie", "frontend security", "session management"]
+
+[[variables]]
+name = "images"
+description = "Screenshots showing application cookies"
+list = true
+
+[[variables]]
+name = "http_only"
+description = "Whether the HttpOnly flag is set on cookies"
+type = "boolean"
+
+[[variables]]
+name = "secure"
+description = "Whether the Secure flag is set on cookies"
+type = "boolean"
+
+[[variables]]
+name = "same_site"
+description = "Whether the SameSite flag is set on cookies"
+type = "boolean"
+
+[[variables]]
+name = "cookies"
+description = "List of cookie flags (attributes `name`, `http_only`, `secure`, `same_site`) found in the application"
+list = true
++++
+
+
+{# Reporting hint:
+    Use the https://github.com/s3r3t0/web-extension firefox extension for easy cookie inspection.
+    It is also available at https://addons.mozilla.org/en-US/firefox/addon/sereto-helper/
+
+    Example output:
+
+    [variables]
+    cookies = [
+        { name = "JSESSIONID", http_only = "yes", secure = "yes", same_site = "Strict" },
+        { name = "my_cookie", http_only = "yes", secure = "no", same_site = "None" },
+    ]
+    secure = false
+    http_only = true
+    same_site = false
+#}
+
+
+{% extends "_base.md" %}
+
+
+{% block description -%}
+
+{% if f.vars.http_only is defined and f.vars.secure is defined and f.vars.same_site is defined -%}
+The application could further restrict access to cookies through flags {{ [
+    "`Secure`" if f.vars.secure is false else "x",
+    "`HttpOnly`" if f.vars.http_only is false else "x",
+    "`SameSite`" if f.vars.same_site is false else "x"
+    ] | reject("equalto", 'x') | join(', ') }}.
+{% else %}
+The application could further restrict access to cookies through security flags.
+{%- endif %}
+
+{% if f.vars.cookies is defined and f.vars.cookies | length > 0 %}
+The following cookies were found in the application:
+
+| Name | HttpOnly | Secure | SameSite |
+| ---- | :------- | :----- | :------- |
+{% for cookie in f.vars.cookies -%}
+| {{ cookie.name }} | {{ cookie.http_only }} | {{ cookie.secure }} | {{ cookie.same_site }} |
+{% endfor %}
+{% endif %}
+
+{% for image in f.vars.images | default([]) -%}
+    ![Screenshot showing proof of a vulnerability]({{image}}){width=90%}
+{% endfor %}
+
+{%- endblock description %}
+
+
+{% block likelihood -%}
+
+{% if f.vars.http_only is defined and f.vars.http_only is false %}
+HttpOnly flag
+
+: If the `HttpOnly` flag is not set, there is a realistic likelihood that client-side scripts could access sensitive cookie values. This increases the risk of misuse if an attacker is able to inject JavaScript into the application, for example via a cross-site scripting ([!xss]) vulnerability. In environments where [!xss] is not present, the likelihood is lower, but the absence of this flag still leaves an unnecessary attack surface.
+{% endif %}
+
+{% if f.vars.secure is defined and f.vars.secure is false %}
+Secure flag
+
+: Without the `Secure` flag, cookies may be transmitted over unencrypted [!http] connections. This makes it more likely that an attacker on the same network could intercept the cookie, especially on public or shared networks. The likelihood of exploitation increases significantly if users access the application over unsecured [!wifi] networks or if the application is accessible via both [!http] and [!https].
+{% endif %}
+
+{% if f.vars.same_site is defined and f.vars.same_site is false %}
+SameSite attribute:
+
+: If the `SameSite` attribute is not set, cookies are more likely to be sent with cross-site requests. This increases the likelihood of successful cross-site request forgery ([!csrf]) attacks, particularly if the application does not implement other anti-[!csrf<] measures. Attackers may exploit this by tricking users into submitting requests from malicious sites.
+{% endif %}
+{%- endblock likelihood %}
+
+
+{% block impact -%}
+
+{% if f.vars.http_only is defined and f.vars.http_only is false %}
+HttpOnly flag
+
+: If the `HttpOnly` attribute is not set on a cookie, there is a tangible risk that client-side scripts could access or manipulate the cookie's value. This may result in unauthorised access to user accounts or sensitive information.
+{% endif %}
+
+{% if f.vars.secure is defined and f.vars.secure is false %}
+Secure flag
+
+: If the `Secure` flag is not set, cookies may be transmitted in clear-text over unencrypted [!http] connections. This exposes the cookie to interception by attackers on the same network, such as on public [!wifi]. If the cookie is used for session management, this could lead to session hijacking and unauthorised actions performed on behalf of the user.
+{% endif %}
+
+{% if f.vars.same_site is defined and f.vars.same_site is false %}
+SameSite attribute
+
+: Without the `SameSite` attribute, cookies are sent with cross-site requests. This increases the risk of [!csrf] attacks, where an attacker could trick a user into submitting unwanted requests to the application. This could result in unauthorised actions being performed using the victim's session, such as changing account details or making transactions.
+{% endif %}
+{%- endblock impact %}
+
+
+{% block recommendation -%}
+
+{% if f.vars.http_only is defined and f.vars.http_only is false %}
+HttpOnly flag
+
+: Set the `HttpOnly` flag on all cookies unless there is a specific, legitimate need for client-side scripts to access the cookie's value. This can be achieved by including the `HttpOnly` attribute in the relevant `Set-Cookie` directive. While this flag does not prevent all attacks, it significantly reduces the risk of cookie theft via client-side script injection.
+{% endif %}
+
+{% if f.vars.secure is defined and f.vars.secure is false %}
+Secure flag
+
+: Set the `Secure` flag on all cookies that are used to transmit sensitive data, especially session tokens. This ensures that cookies are only sent over encrypted [!https] connections, reducing the risk of interception. Review the application's deployment to ensure that cookies are not accessible over unencrypted channels.
+{% endif %}
+
+{% if f.vars.same_site is defined and f.vars.same_site is false %}
+SameSite attribute
+
+: Set the `SameSite` attribute to `Strict` or `Lax` for all cookies that are used for authentication or sensitive operations. This helps prevent cookies from being sent with cross-site requests, mitigating the risk of [!csrf] attacks. Where possible, use `SameSite=Strict` for maximum protection, and consider using POST requests for state-changing actions to further reduce risk.
+{% endif %}
+{%- endblock recommendation %}
+
+
+{% block reference -%}
+- [MDN Web Docs -- Set-Cookie header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie)
+- [Sjoerd Langkemper -- Preventing CSRF with the same-site cookie attribute](https://www.sjoerdlangkemper.nl/2016/04/14/preventing-csrf-with-samesite-cookie-attribute/)
+- [Invicti -- Preventing CSRF Attacks with the SameSite Cookie Attribute](https://www.invicti.com/blog/web-security/same-site-cookie-attribute-prevent-cross-site-request-forgery/)
+- [OWASP ASVS](https://github.com/OWASP/ASVS/blob/v5.0.0_release/5.0/en/0x12-V3-Web-Frontend-Security.md#v33-cookie-setup)
+{%- endblock reference %}
