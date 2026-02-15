@@ -8,7 +8,7 @@
       ((( loop.index ))) & %
         \hyperref[ (((- target.uname + "_" + finding_group.uname -))) ]{ (((- finding_group.name | tex -))) } & %
         ((( finding_group.risk | capitalize | tex ))) & %
-      ((( config.due_date_for(finding_group.risk) | default('', true) ))) \\
+      ((( config.due_date(finding_group.risk, finding_group.reported_on) | default('', true) ))) \\
     ((* endfor -*))
     \bottomrule
   \end{longtable}

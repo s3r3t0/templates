@@ -1,6 +1,6 @@
 ((* from "macros.tex.j2" import finding_details *))
 
-\subsection{(((finding_group.name)))}
+\subsection{(((- finding_group.name | tex -)))}
 \label{((( target.uname + "_" + finding_group.uname )))}
 
 \begin{tcolorbox}
@@ -9,7 +9,7 @@
     locators=finding_group.locators,
     locators_title="Host",
     details = {
-      "Recommended Due Date": c.due_date_for(finding_group.risk)
+      "Recommended Due Date": config.due_date(finding_group.risk, finding_group.reported_on)
     }
   ) )))
 \end{tcolorbox}
@@ -20,7 +20,7 @@
     \begin{tcolorbox}[title={((( finding.name )))},enhanced,segmentation style={solid,line width=2pt}]
       ((( finding_details(
         risk=finding.risk.value,
-        locators=finding.locators,
+        locators=finding_group.subfinding_locators(finding),
         locators_title="Host",
         details=none
       ) )))
