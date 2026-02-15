@@ -1,0 +1,105 @@
+export SERETO_PROJECTS_PATH="$HOME/reports/test"
+export SERETO_TEMPLATES_PATH="$PWD"
+export SERETO_DEFAULT_PEOPLE='[
+    {
+        "type": "author",
+        "name": "John Doe",
+        "business_unit": "ACME Inc.",
+        "email": "john.doe@acme.net",
+        "role": "Penetration Tester"
+    },
+    {
+        "type": "technical_contact",
+        "name": "Will E. Coyote",
+        "business_unit": "ACME Inc.",
+        "email": "will.e.coyote@acme.net",
+        "role": "Penetration Testing Division Lead"
+    },
+    {
+        "type": "reviewer",
+        "name": "Jane Doe",
+        "business_unit": "ACME Inc.",
+        "email": "jane.doe@acme.net",
+        "role": "Quality Assurance Officer"
+    },
+    {
+        "type": "requestor",
+        "name": "Road Runner",
+        "business_unit": "Example Services Ltd.",
+        "email": "road.runner@example.com",
+        "role": "Chief Information Security Officer"
+    }
+]'
+export SERETO_RENDER='{
+    "report_recipes": [
+        {
+            "name": "default-report",
+            "tools": [
+                "latexmk"
+            ],
+            "intermediate_format": "tex"
+        }
+    ],
+    "finding_group_recipes": [
+        {
+            "name": "default-finding",
+            "tools": [
+                "latexmk"
+            ],
+            "intermediate_format": "tex"
+        }
+    ],
+    "sow_recipes": [
+        {
+            "name": "default-sow",
+            "tools": [
+                "latexmk"
+            ],
+            "intermediate_format": "tex"
+        }
+    ],
+    "target_recipes": [
+        {
+            "name": "default-target",
+            "tools": [
+                "latexmk"
+            ],
+            "intermediate_format": "tex"
+        }
+    ],
+    "convert_recipes": [
+        {
+            "name": "convert-md-to-tex",
+            "tools": [
+                "pandoc-md-tex"
+            ],
+            "input_format": "md",
+            "output_format": "tex"
+        }
+    ],
+    "tools": [
+        {
+            "name": "pandoc-md-tex",
+            "command": "pandoc",
+            "args": [
+                "--from=markdown-implicit_figures+lists_without_preceding_blankline",
+                "--to=latex",
+                "--sandbox",
+                "--filter=%TEMPLATES%/pandocfilters/acronyms.py",
+                "--filter=%TEMPLATES%/pandocfilters/graphics.py",
+                "--filter=%TEMPLATES%/pandocfilters/verbatim.py"
+            ]
+        },
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-xelatex",
+                "-interaction=batchmode",
+                "-halt-on-error",
+                "%DOC%"
+            ]
+        }
+    ]
+}'
+[[ -d ".venv" ]] && source .venv/bin/activate
