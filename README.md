@@ -15,8 +15,9 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/s3r3t0/templates)
 ![GitHub top language](https://img.shields.io/github/languages/top/s3r3t0/templates)
 
-[![Debian package](https://img.shields.io/debian/v/pandoc?label=pandoc)][pandoc-manual]
-[![jinja2 version](https://img.shields.io/badge/jinja2-v3.1.0-blue)](https://jinja.palletsprojects.com/en/stable/)
+[![pandoc version](https://img.shields.io/badge/pandoc-v3.1.2-blue)][pandoc-manual]
+[![jinja2 version](https://img.shields.io/badge/jinja2-v3.1.0-blue)][jinja-manual]
+![python version](https://img.shields.io/badge/python-v3.12-blue)
 
 A basic template structure for documents created with the [Security Reporting Tool (SeReTo)][SeReTo].
 
@@ -89,6 +90,8 @@ Patch versions are reserved for changes related to the template only.
 
 The style is inspired by the [Eisvogel] pandoc LaTeX template.
 
+Check out the Typst-based [Rusty Templates][rusty-templates] for a more modern alternative to LaTeX templates.
+
 > Created with support of [NN Management Services, s.r.o.][nn]
 
 [SeReTo]: https://github.com/s3r3t0/sereto
@@ -97,8 +100,10 @@ The style is inspired by the [Eisvogel] pandoc LaTeX template.
 [template]: https://github.com/new?template_name=templates&template_owner=s3r3t0
 [semver]: https://semver.org
 [tags]: https://github.com/s3r3t0/templates/tags
+[rusty-templates]: https://github.com/s3r3t0/rusty-templates
 [license]: https://github.com/s3r3t0/templates/blob/main/LICENSE.md
 [Changelog]: https://github.com/s3r3t0/templates/blob/main/CHANGELOG.md
 [nn]: https://www.nn.cz/kariera/en/nn-digital-hub/
 [release]: https://github.com/s3r3t0/templates/releases/latest
 [pandoc-manual]: https://pandoc.org/MANUAL.html
+[jinja-manual]: https://jinja.palletsprojects.com/en/stable/templates/
