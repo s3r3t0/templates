@@ -1,10 +1,11 @@
 import click
+from sereto.logging import logger
 
 
 @click.command()
 def test():
     """Test plugin."""
-    click.echo("Test plugin executed")
+    logger.success("Test plugin executed.")
 
 
 def register_commands(cli: click.Group):
