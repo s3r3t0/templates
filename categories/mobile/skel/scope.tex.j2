@@ -4,7 +4,7 @@
   The scope of the penetration test was described in:
 
   \begin{itemize}
-    \item \nolinkurl{((( target.data.clickpath | tex ))) } document
+    \item \enquote{ (((- target.data.clickpath | tex -))) } document
   \end{itemize}
 ((* else -*))
   The scope of the mobile application test was limited to the scope given below.
@@ -58,7 +58,7 @@
   \begin{longtable}{ r l }
     \toprule
     ((* for name, hash in file_integrity.items() -*))
-      \nolinkurl{ (((- name -)))} & \Verb|(((- hash -)))| \\
+      \nolinkurl{ (((- name | tex -))) } & \Verb{ (((- hash -))) } \\
     ((*- endfor *))
     \bottomrule
   \end{longtable}
