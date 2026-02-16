@@ -20,12 +20,6 @@
   ((* if target.data.id -*))
     Target ID & ((( target.data.id | tex ))) \\
   ((*- endif *))
-  ((* if target.data.locators | length -*))
-    Target \acp{url}
-    ((*- for url in target.filter_locators("url") *))
-      & \nolinkurl{((( url.value | tex )))} \\
-    ((* endfor *))
-  ((*- endif *))
   ((* if target.data.dst_ips_dynamic -*))
     Target \acp{ip} & Dynamic ( (((- target.data.dst_ips_dynamic_details -))) ) \\
   ((* else -*))
@@ -45,6 +39,20 @@
   ((* endif *))
   \bottomrule
 \end{longtable}
+
+((* if target.filter_locators("url") | length -*))
+  The target has the following \acp{url} in scope:
+
+  \begin{longtable}{ l }
+    \toprule
+    ((* for url in target.filter_locators("url") *))
+      \nolinkurl{((( url.value | tex )))} \\
+    ((* endfor *))
+    \bottomrule
+  \end{longtable}
+((*- else -*))
+  The target has no \acp{url} in scope.
+((*- endif *))
 
 The target has the following defenses in place:
 

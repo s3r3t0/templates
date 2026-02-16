@@ -10,9 +10,9 @@ export SERETO_DEFAULT_PEOPLE='[
     },
     {
         "type": "technical_contact",
-        "name": "Will E. Coyote",
+        "name": "Wile E. Coyote",
         "business_unit": "ACME Inc.",
-        "email": "will.e.coyote@acme.net",
+        "email": "wile.e.coyote@acme.net",
         "role": "Penetration Testing Division Lead"
     },
     {

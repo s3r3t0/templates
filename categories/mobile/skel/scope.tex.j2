@@ -1,6 +1,18 @@
 \subsection{Scope}
 
-The scope of the penetration test was limited to the scope given below.
+((* if target.data.clickpath -*))
+  The scope of the penetration test was described in:
+
+  \begin{itemize}
+    \item \nolinkurl{((( target.data.clickpath | tex ))) } document
+  \end{itemize}
+((* else -*))
+  The scope of the mobile application test was limited to the scope given below.
+((*- endif *))
+
+((* set android = target.data.android | default(None) *))
+((* set ios = target.data.ios | default(None) *))
+((* set file_integrity = {} *))
 
 \begin{longtable}{ r l }
   \toprule
@@ -8,11 +20,46 @@ The scope of the penetration test was limited to the scope given below.
   ((* if target.data.id -*))
     Target ID & ((( target.data.id | tex ))) \\
   ((*- endif *))
-  ((* if target.data.locators | length -*))
-    Target application
-    ((*- for loc in target.data.locators *))
-      & \nolinkurl{((( loc.value | tex )))} \\
-    ((* endfor *))
-  ((*- endif *))
+  Platforms & ((( ["Android" if android, "iOS" if ios] | select | join(", ") ))) \\
   \bottomrule
 \end{longtable}
+
+((* if android -*))
+  Android details:
+
+  \begin{longtable}{ r l }
+    \toprule
+    Package name & ((( android.package_name ))) \\
+    Version & ((( android.version_name ))) \\
+    Version code & ((( android.version_code ))) \\
+    \bottomrule
+  \end{longtable}
+
+  ((* set _ = file_integrity.update(android.file_integrity) *))
+((*- endif *))
+
+((* if ios -*))
+  iOS details:
+
+  \begin{longtable}{ r l }
+    \toprule
+    Bundle ID & ((( ios.bundle_id ))) \\
+    Version & ((( ios.short_version_string ))) \\
+    Build & ((( ios.version ))) \\
+    \bottomrule
+  \end{longtable}
+
+  ((* set _ = file_integrity.update(ios.file_integrity) *))
+((*- endif *))
+
+((* if file_integrity | length > 0 *))
+  File integrity information:
+
+  \begin{longtable}{ r l }
+    \toprule
+    ((* for name, hash in file_integrity.items() -*))
+      \nolinkurl{ (((- name -)))} & \Verb|(((- hash -)))| \\
+    ((*- endfor *))
+    \bottomrule
+  \end{longtable}
+((* endif *))
