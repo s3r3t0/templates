@@ -7,13 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-02-16
+
 ### Added
 
 - DAST finding: Cookies without Security Flags Set
+- MOBILE target: Added tables with configuration details to the scope section.
+- Added configuration for testing and linting the templates.
 
 ### Fixed
 
 - Show headings for optional sections (impact, recommendation, references) only if they contain content.
+
+### Changed
+
+- DAST target: Moved Target URLs to separate tables in the scope section for better readability.
+- Finding blocks now render conditionally based on the presence of content, preventing empty sections in the report.
+- Subfindings now utilize the dynamically computed `subfinding_locators` for more accurate information in the finding header.
+- Due dates now utilize the `due_date` method for consistent reporting of recommended fix dates across report versions.
 
 ## [0.4.0] - 2025-10-08
 
@@ -137,6 +148,7 @@ Added support for cicd, kubernetes, mobile, infrastructure, portal, and sast cat
 Initial version
 
 [Unreleased]: https://github.com/s3r3t0/templates/compare/v0.4.0...HEAD
+[0.5.0]: https://github.com/s3r3t0/templates/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/s3r3t0/templates/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/s3r3t0/templates/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/s3r3t0/templates/compare/v0.2.0...v0.2.1
