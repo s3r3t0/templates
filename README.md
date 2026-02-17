@@ -20,6 +20,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/s3r3t0/templates)
 
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/s3r3t0/templates/badge)](https://scorecard.dev/viewer/?uri=github.com/s3r3t0/templates)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/11967/badge)](https://www.bestpractices.dev/projects/11967)
 
 A basic template structure for documents created with the [Security Reporting Tool (SeReTo)][SeReTo].
 
