@@ -50,9 +50,9 @@ tox==4.36.1 \
     --hash=sha256:085ddf2e6ebd2a5be04ae8f4a2c6422a7994a4702b3c187edc4e99f1e7ccdc2a \
     --hash=sha256:1a26afa08ff0a527e2055959c99907058328aaa5134fcea07ad2ae1dbce1a09a
     # via tox-gh
-tox-gh==1.6.1 \
-    --hash=sha256:070b69bf50821393e1ff0237006bb61b33347e2060eaec415fbfdefa48131aa7 \
-    --hash=sha256:b43240f689430b33a1877ab8794afe922e3b57a61b56c1f47daf1925367ea289
+tox-gh==1.7.1 \
+    --hash=sha256:4f4871ee4091b41464f2df9ab1fcedb14a48accdecbb60d53297301a9d8984c6 \
+    --hash=sha256:a82285b16a597516f9a24f20326b124ddc7924a8b70cb05a9192e1c53d7f701d
     # via -r requirements.in
 virtualenv==20.38.0 \
     --hash=sha256:94f39b1abaea5185bf7ea5a46702b56f1d0c9aa2f41a6c2b8b0af4ddc74c10a7 \
