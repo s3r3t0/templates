@@ -34,7 +34,7 @@ regex = re.compile(
     r"""# regex for acronym tag in format [!+^acronym!]
     (?P<opening>\[!)      # Opening part of the acronym tag
     (?P<prefix>\+?\^?)    # Optional plural and capitalized prefixes
-    (?P<tag>[a-zA-Z]+)    # Acronym id
+    (?P<tag>[\w-]+)       # Acronym id
     (?P<extension>[<>!]?) # Optional suffix for choice of the display form
     (?P<closing>\])       # Closing part of the acronym tag """,
     re.VERBOSE,
