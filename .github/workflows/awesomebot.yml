@@ -29,4 +29,4 @@ jobs:
       run: gem install awesome_bot
       
     - name: Verify links
-      run: awesome_bot README.md --skip-save-results --allow-redirect -w raw.githubusercontent.com
+      run: awesome_bot README.md --skip-save-results --allow-redirect -a 429 -w raw.githubusercontent.com
