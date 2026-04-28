@@ -8,7 +8,7 @@ Usage:
 
 import re
 
-from pandocfilters import RawInline, toJSONFilter
+import panflute as pf
 
 tags = {
     ":": "ac",
@@ -41,35 +41,32 @@ regex = re.compile(
 )
 
 
-def acronyms(key, value, format, meta):
+def acronyms(elem: pf.Element, doc: pf.Doc) -> list[pf.RawInline] | None:
     """Translate the acronym tags.
 
     Args:
-        key     type of pandoc object
-        value   contents of pandoc object
-        format  target output format
-        meta    document metadata
+        elem    pandoc element
+        doc     pandoc document
     """
 
-    if format != "latex" or key != "Str":
-        return
+    if not isinstance(elem, pf.Str) or doc.format != "latex":
+        return None
 
-    match = re.search(regex, value)
+    match = re.search(regex, elem.text)
 
-    if match:
-        return [
-            RawInline(format, value[: match.start()]),
-            RawInline(
-                format,
-                "\\" + tags[match.group("prefix") + ":" + match.group("extension")] + "{" + match.group("tag") + "}",
-            ),
-            RawInline(format, value[match.end() :]),
-        ]
+    if not match:
+        return None
+
+    prefix = elem.text[: match.start()]
+    suffix = elem.text[match.end() :]
+
+    tag = "\\" + tags[match.group("prefix") + ":" + match.group("extension")] + "{" + match.group("tag") + "}"
+    return [pf.RawInline(text=t, format=doc.format) for t in [prefix, tag, suffix] if t]
 
 
-def main():
+def main() -> None:
     """cli entry point"""
-    toJSONFilter(acronyms)
+    pf.run_filter(acronyms)
 
 
 if __name__ == "__main__":

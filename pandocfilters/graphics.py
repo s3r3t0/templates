@@ -5,58 +5,42 @@ Usage:
     pandoc --filter ./graphics.py -o myfile.tex myfile.md
 """
 
-from pandocfilters import RawInline, toJSONFilter
+import panflute as pf
 
 
-def unpack_attributes(attributes):
-    """Unpack the image attributes.
-
-    Args:
-        attributes       pandoc Attr object
-    """
-    id, cls, kv = attributes
+def unpack_attributes(attrs: dict[str, str]) -> str:
     result = []
-
-    for key, value in kv:
-        if key in ["width", "height"] and value.find("%") >= 0:
+    for key, value in attrs.items():
+        if key in ("width", "height") and "%" in value:
             value = str(int(value.rstrip("%")) / 100.0) + r"\textwidth"
-        result.append("=".join([key, value]))
-
+        result.append(f"{key}={value}")
     return ", ".join(result)
 
 
-def graphics(key, value, format, meta):
-    """Use custom figure environment in LaTeX.
+def graphics(elem: pf.Element, doc: pf.Doc) -> list[pf.RawInline] | None:
+    if not isinstance(elem, pf.Image) or doc.format != "latex":
+        return None
 
-    Args:
-        key     type of pandoc object
-        value   contents of pandoc object
-        format  target output format
-        meta    document metadata
-    """
-    if format != "latex" or key != "Image":
-        return
-
-    [attributes, alt, [url, title]] = value
+    url = elem.url
+    attrs = elem.attributes
 
     return [
-        RawInline(
-            format,
-            r"\begin{figure}[H]"
+        pf.RawInline(
+            text=r"\begin{figure}[H]"
             + r"\centering"
             + r"\includegraphics["
-            + unpack_attributes(attributes)
+            + unpack_attributes(attrs)
             + "]{"
             + url
-            + "}"
-            + r"\end{figure}",
+            + r"}\end{figure}",
+            format="latex",
         )
     ]
 
 
 def main():
     """cli entry point"""
-    toJSONFilter(graphics)
+    pf.run_filter(graphics)
 
 
 if __name__ == "__main__":
