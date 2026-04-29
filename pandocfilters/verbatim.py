@@ -5,15 +5,14 @@ Usage:
     pandoc --filter ./verbatim.py -o myfile.tex myfile.md
 """
 
+import panflute as pf
 from click import echo
 from pygments import highlight
 from pygments.formatters import LatexFormatter
 from pygments.lexers import get_lexer_by_name
 
-from pandocfilters import RawBlock, RawInline, toJSONFilter
 
-
-def highlight_code(code, language):
+def highlight_code(code: str, language: str) -> str:
     """Highlight code with pygments.
 
     Args:
@@ -29,39 +28,30 @@ def highlight_code(code, language):
     return highlight(code, lexer, formatter)
 
 
-def verbatim(key, value, format, meta):
+def verbatim(elem: pf.Element, doc: pf.Doc) -> list[pf.RawBlock] | list[pf.RawInline] | None:
     """Process verbatim objects.
 
     Args:
-        key     type of pandoc object
-        value   contents of pandoc object
-        format  target output format
-        meta    document metadata
+        elem    pandoc element
+        doc     pandoc document
     """
-    if format != "latex":
-        return
+    if doc.format != "latex":
+        return None
 
-    if key not in ["CodeBlock", "Code"]:
-        return
+    if isinstance(elem, pf.CodeBlock):
+        language = elem.classes[0] if elem.classes else "text"
+        text = highlight_code(elem.text, language)
+        return [pf.RawBlock(text=text, format="latex")]
+    elif isinstance(elem, pf.Code):
+        text = r"\Verb|" + elem.text + r"|"
+        return [pf.RawInline(text=text, format="latex")]
 
-    [[id, cls, kv], text] = value
-
-    language = cls[0] if len(cls) else "text"
-
-    # Determine what kind of code object this is.
-    if key == "CodeBlock":
-        Element = RawBlock
-        text = highlight_code(text, language)
-    elif key == "Code":
-        text = r"\Verb|" + text + r"|"
-        Element = RawInline
-
-    return [Element(format, text)]
+    return None
 
 
 def main():
     """cli entry point"""
-    toJSONFilter(verbatim)
+    pf.run_filter(verbatim)
 
 
 if __name__ == "__main__":
