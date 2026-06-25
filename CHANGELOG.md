@@ -10,12 +10,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added TEST category and finding templates for testing and debugging purposes.
+- Added support `documents` field in scope to allow for multiple documents to be listed in the report.
 - DAST category: Added support for `exposure` field in scope.
+- DAST category: Added support for `api` related setup.
 
 ### Changed
 
 - Acronyms filter: Support alphanumeric characters, dashes, and underscores for better handling of various naming conventions.
 - Renamed example finding "Test Finding" to "Example Finding" to properly reflect its purpose as syntax reference.
+
+### Removed
+
+- DAST category: Removed support for `clickpath` and `api` fields in scope. Use `documents` field instead.
 
 ## [0.5.0] - 2026-02-16
 

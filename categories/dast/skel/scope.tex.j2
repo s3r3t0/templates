@@ -1,14 +1,16 @@
 \subsection{Scope}
 
-((* if target.data.api or target.data.clickpath -*))
+((* if target.data.documents | length > 0 -*))
   The scope of the penetration test was described in:
   \begin{itemize}
-    ((* if target.data.clickpath -*))
-      \item \emph{((( target.data.clickpath | tex )))} document
-    ((*- endif *))
-    ((* if target.data.api -*))
-      \item \emph{((( target.data.api | tex )))} \ac{api} collection
-    ((*- endif *))
+    ((* for doc in target.data.documents *))
+      \item \emph{((( doc.value | tex )))}
+        ((* if doc.description -*))
+          (((- doc.description | tex -)))
+        ((*- else -*))
+          (((- doc.type | lower | tex ))) document
+        ((*- endif *))
+    ((* endfor *))
   \end{itemize}
 ((* else -*))
   The scope of the penetration test was limited to the scope given below.
