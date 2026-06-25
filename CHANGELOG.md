@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added TEST category and finding templates for testing and debugging purposes.
+- DAST category: Added support for `exposure` field in scope.
 
 ### Changed
 
