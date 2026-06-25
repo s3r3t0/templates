@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added TEST category and finding templates for testing and debugging purposes.
+
 ### Changed
 
 - Acronyms filter: Support alphanumeric characters, dashes, and underscores for better handling of various naming conventions.
+- Renamed example finding "Test Finding" to "Example Finding" to properly reflect its purpose as syntax reference.
 
 ## [0.5.0] - 2026-02-16
 
