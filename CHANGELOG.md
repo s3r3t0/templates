@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Acronyms filter: Support alphanumeric characters, dashes, and underscores for better handling of various naming conventions.
 - Renamed example finding "Test Finding" to "Example Finding" to properly reflect its purpose as syntax reference.
+- Finding groups now use the new `suggested_name` property instead of the simple `name` property.
 
 ### Removed
 
