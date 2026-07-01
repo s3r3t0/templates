@@ -102,4 +102,17 @@ export SERETO_RENDER='{
         }
     ]
 }'
+export SERETO_CATEGORIES='[
+    "dast",
+    "sast",
+    "mobile",
+    "scenario",
+    "infrastructure",
+    "portal",
+    "cicd",
+    "kubernetes",
+    "rd",
+    "generic",
+    "test"
+]'
 [[ -d ".venv" ]] && source .venv/bin/activate

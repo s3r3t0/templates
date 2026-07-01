@@ -16,3 +16,17 @@ The scope of the penetration test was limited to the scope given below.
   ((*- endif *))
   \bottomrule
 \end{longtable}
+
+((* if target.data.documents | length > 0 -*))
+  The following supporting documents were provided:
+  \begin{itemize}
+    ((* for doc in target.data.documents *))
+      \item \emph{((( doc.value | tex )))}
+        ((* if doc.description -*))
+          (((- doc.description | tex -)))
+        ((*- else -*))
+          (((- doc.type | lower | tex ))) document
+        ((*- endif *))
+    ((* endfor *))
+  \end{itemize}
+((*- endif *))

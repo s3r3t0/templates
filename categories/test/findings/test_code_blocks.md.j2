@@ -1,0 +1,424 @@
++++
+name = "Code Environments"
+risk = "info"
+keywords = ["test", "code"]
++++
+
+
+{% extends "_base.md" %}
+
+
+{% block description -%}
+| scenario text | `raw_short` | `raw_long` |
+| :------------ | :---------- | :--------- |
+| A compact baseline sentence used to confirm default wrapping and vertical alignment in a narrow table column. | `test` | `testTest` |
+| This sentence introduces moderate length prose so line wrapping occurs naturally before any extreme token pressure is applied. | `renderFlow` | `ExtremelyLongCamelCaseWrappingValidationToken` |
+| The row checks underscore-heavy identifiers beside regular prose where both columns may compete for available horizontal space. | `wrap_case` | `extremely_long_snake_case_wrapping_validation_token` |
+| Mixed punctuation in machine-like identifiers can trigger unexpected segmentation boundaries in some rendering environments. | `api-response_code` | `HyperExtendedCamelCase_and_snake_case_MixedBoundarySequence` |
+| Abbreviation runs such as HTTP and TLS are often rendered differently and should be observed during regression checks. | `HTTPParser` | `HTTPResponseBoundaryNormalizationControllerSequence` |
+| Numeric fragments inside words are useful to simulate build labels and release references in documentation tables. | `sha256_hash_value` | `Version2026CompatibilityRegressionWrappingIdentifierBlock` |
+| A longer narrative sentence improves confidence that ordinary descriptive content remains readable beside technical artefacts. | `inputToken` | `ContextAwareCharacterSegmentationVerificationPipeline` |
+| Edge testing with repetitive sentence structure can expose inconsistent break opportunities across adjacent rows. | `config_item` | `ultra_repetitive_snake_case_structure_for_boundary_observation` |
+| This row mirrors real report language where explanatory prose appears next to copied identifiers from logs or tools. | `errorCode` | `DistributedTelemetryCorrelationAndNormalizationSupervisor` |
+| When columns tighten, long compounds may produce overfull behaviour unless zero-width breakpoints are injected correctly. | `cache_key` | `cross_environment_state_synchronization_checkpoint_identifier` |
+| Sentence diversity helps detect subtle spacing regressions introduced by typography or font fallback changes. | `BuildStage` | `PreDeploymentCompatibilityAssessmentAndHardeningCoordinator` |
+| This case introduces URL-like phrasing in prose while preserving identifier pressure in raw columns for balanced stress. | `route_map` | `deterministic_request_routing_and_observability_enforcement_profile` |
+| A deliberately verbose sentence ensures paragraph-like wrapping behaviour can be reviewed in realistic document composition. | `DocFlow` | `DocumentAssemblyContinuityAndPaginationResilienceController` |
+| Practical test data should include both concise and extended rows to avoid overfitting to only one text profile. | `user_id` | `federated_identity_resolution_and_authorization_context_pipeline` |
+| This sentence is intentionally calm and neutral while the neighbouring raw tokens remain structurally challenging. | `AuthGuard` | `ProgressiveAuthenticationStateMachineConsistencyVerifier` |
+| Rendering consistency across pages is easier to spot when similar semantic content appears with different token shapes. | `report_key` | `longitudinal_report_snapshot_integrity_validation_sequence` |
+| Use this row to inspect how punctuation, whitespace, and deeply nested compounds interact in constrained layouts. | `ParserCore` | `HierarchicalProtocolDisambiguationAndReconstructionEngine` |
+| A near-natural sentence with administrative tone reflects realistic pentest report body content in table contexts. | `task_ref` | `service_management_ticket_lifecycle_traceability_identifier` |
+| Token-heavy examples can reveal where replacement rules inject separators too aggressively or not aggressively enough. | `EventBridge` | `AdaptiveEventIngestionBackpressureAndRecoveryOrchestrator` |
+| This row helps confirm that semantic readability of the first column is preserved even under extreme neighbour pressure. | `session_tag` | `high_entropy_session_correlation_and_state_transition_marker` |
+| Keep at least one row with plainer wording to compare baseline rendering against intentionally complex stress patterns. | `plainText` | `baseline_comparison_marker_for_wrapping_regression_checks` |
+| A denser sentence variant can expose subtle differences in justification and spacing around punctuation marks. | `LineProbe` | `InterParagraphSpacingAndLineBreakOpportunityInspector` |
+| Systems documentation often contains this blend of descriptive prose and technical fragments, making it an ideal testcase. | `node_label` | `multi_region_node_affinity_and_failover_coordination_profile` |
+| The following entries continue to increase lexical complexity to stress token segmentation and wrapping reliability. | `CoreMatrix` | `ComputationalDependencyGraphStabilizationAndValidationKernel` |
+| Long sentence text with ordinary words should still remain pleasant to read when adjacent identifiers become extreme. | `queue_name` | `priority_aware_distributed_queue_reconciliation_checkpoint` |
+| A practical row for regression runs where rendering output is compared pixel by pixel across formatter revisions. | `RenderAudit` | `DeterministicLayoutOutputComparisonAndDriftDetectionRunner` |
+| Final stress row combines naturally phrased text with maximal identifier pressure to exercise your wrapping routine end to end. | `final_case` | `MaximumIntensityCamelCaseAndSnakeCaseCompositeWrappingValidationTerminator` |
+{%- endblock description %}
+
+
+{% block likelihood -%}
+During the security assessment, we discovered that the authentication module uses `UserAuthenticationSessionReconciliationAndAnomalyCorrelationCoordinator` to manage cross-tenant identity verification workflows. The implementation relies on `maximum_permitted_unsuccessful_authentication_attempt_threshold_before_adaptive_lockout_activation` to enforce progressive hardening policies, but this threshold is not configurable per environment. Additionally, the `runtime_generated_cross_environment_incident_response_correlation_identifier` is constructed without sufficient entropy validation, allowing potential collision attacks across distributed infrastructure nodes.
+
+The API endpoint responsible for telemetry collection, `distributedSecurityTelemetryAggregationAndNormalisationPipelineBootstrapConfiguration`, exposes several configuration parameters that should remain internal. Specifically, the `environmentSpecificCrossRegionFailoverAndReplayProtectionWindowInMilliseconds` setting is hardcoded to 900000ms, which may be insufficient for high-latency deployments in geographically dispersed regions. Furthermore, the `deterministicRequestFingerprintingAndBehaviouralCorrelationStrategyIdentifier` uses a weak hash algorithm rather than cryptographically secure functions, undermining the integrity of downstream incident response orchestration.
+
+The Kubernetes deployment manifest for `behavioural-anomaly-correlation-and-remediation-orchestration-controller` includes environment variables such as `MAXIMUM_PERMITTED_INTER_SERVICE_RETRY_ATTEMPT_COUNTER_BEFORE_CIRCUIT_BREAKER_OPEN_STATE` that are logged in plaintext during startup diagnostics. The corresponding service `distributed_incident_response_state_synchronisation_checkpoint_identifier_namespace_v2` lacks proper access control boundaries, permitting lateral movement between tenant namespaces. These misconfigurations compound the risk associated with `incident_response_automation_workflow_execution_correlation_identifier_for_wrap_stress_testing_2026_06_10` being exposed in audit logs without redaction.
+
+The SQL query constructing `cross_tenant_authentication_anomaly_observation_and_correlation_window` does not filter by organizational context before aggregating failure counts, leading to potential false positives where unrelated authentication events from separate tenants are conflated. The risk classification function uses hardcoded thresholds in `CriticalCredentialStuffingCampaignWithHighConfidenceCrossSystemCorrelation` and `HighRiskDistributedBruteforcePatternRequiringImmediateAdaptiveCountermeasures` rather than adaptive machine learning models, reducing detection accuracy in novel attack scenarios.
+{%- endblock likelihood %}
+
+
+{% block impact -%}
+{%- endblock impact %}
+
+
+{% block recommendation -%}
+```py
+#!/usr/bin/env python3
+"""
+Large demonstration script for pagination and text-wrapping tests.
+
+This module intentionally contains:
+1) long identifiers (camelCase, snake_case, and mixed styles),
+2) long string literals,
+3) substantial data structures,
+4) verbose docstrings and comments,
+so that it occupies more than one page when rendered in report templates.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from datetime import UTC, datetime, timedelta
+from enum import Enum
+from hashlib import sha256
+from json import dumps
+from random import Random
+from typing import Any, Iterable
+
+
+class IncidentSeverityClassification(Enum):
+    INFORMATIONAL = "informational"
+    LOW = "low"
+    MEDIUM = "medium"
+    HIGH = "high"
+    CRITICAL = "critical"
+
+
+@dataclass(slots=True)
+class SecurityEventContextEnvelope:
+    tenant_identifier: str
+    source_network_address: str
+    principal_identifier: str
+    event_name: str
+    event_timestamp_utc: datetime
+    distributed_correlation_identifier: str
+    risk_signal_attributes: dict[str, Any] = field(default_factory=dict)
+
+    def canonical_event_identity_string(self) -> str:
+        return (
+            f"{self.tenant_identifier}|{self.principal_identifier}|"
+            f"{self.source_network_address}|{self.event_name}|"
+            f"{self.event_timestamp_utc.isoformat()}|"
+            f"{self.distributed_correlation_identifier}"
+        )
+
+    def deterministic_event_checksum_sha256(self) -> str:
+        canonical = self.canonical_event_identity_string().encode("utf-8")
+        return sha256(canonical).hexdigest()
+
+
+@dataclass(slots=True)
+class ProgressiveAdaptiveMitigationDecision:
+    decision_identifier: str
+    severity: IncidentSeverityClassification
+    should_force_session_invalidation: bool
+    should_require_step_up_authentication: bool
+    should_enable_tenant_scoped_rate_limiting: bool
+    rationale: str
+
+
+class BehaviouralAnomalyCorrelationAndMitigationOrchestrationCoordinator:
+    """
+    A deliberately verbose class name designed to create long tokens in output.
+    """
+
+    def __init__(
+        self,
+        *,
+        unsuccessful_authentication_attempt_critical_threshold: int = 35,
+        unsuccessful_authentication_attempt_high_threshold: int = 20,
+        unsuccessful_authentication_attempt_medium_threshold: int = 10,
+        pseudo_random_seed_for_reproducible_test_output: int = 20260611,
+    ) -> None:
+        self.unsuccessful_authentication_attempt_critical_threshold = (
+            unsuccessful_authentication_attempt_critical_threshold
+        )
+        self.unsuccessful_authentication_attempt_high_threshold = (
+            unsuccessful_authentication_attempt_high_threshold
+        )
+        self.unsuccessful_authentication_attempt_medium_threshold = (
+            unsuccessful_authentication_attempt_medium_threshold
+        )
+        self._random = Random(pseudo_random_seed_for_reproducible_test_output)
+
+    def _derive_human_readable_rationale_with_long_identifiers(
+        self,
+        *,
+        failed_authentication_event_counter_within_observation_window: int,
+        geo_velocity_anomaly_probability_score: float,
+        impossible_travel_detection_confidence_percentage: float,
+        known_malicious_ip_reputation_score: float,
+    ) -> str:
+        return (
+            "Decision generated by behavioural_anomaly_correlation_pipeline; "
+            f"failed_authentication_event_counter_within_observation_window="
+            f"{failed_authentication_event_counter_within_observation_window}, "
+            f"geo_velocity_anomaly_probability_score="
+            f"{geo_velocity_anomaly_probability_score:.4f}, "
+            f"impossible_travel_detection_confidence_percentage="
+            f"{impossible_travel_detection_confidence_percentage:.2f}, "
+            f"known_malicious_ip_reputation_score="
+            f"{known_malicious_ip_reputation_score:.4f}. "
+            "Recommended action selected using deterministic thresholds "
+            "for documentation-rendering stress-test reproducibility."
+        )
+
+    def _calculate_composite_risk_signal_score(
+        self,
+        *,
+        failed_authentication_event_counter_within_observation_window: int,
+        geo_velocity_anomaly_probability_score: float,
+        impossible_travel_detection_confidence_percentage: float,
+        known_malicious_ip_reputation_score: float,
+    ) -> float:
+        normalized_failed_auth_signal = min(
+            failed_authentication_event_counter_within_observation_window / 50.0,
+            1.0,
+        )
+        normalized_impossible_travel_signal = min(
+            impossible_travel_detection_confidence_percentage / 100.0,
+            1.0,
+        )
+        return (
+            (0.45 * normalized_failed_auth_signal)
+            + (0.25 * geo_velocity_anomaly_probability_score)
+            + (0.20 * normalized_impossible_travel_signal)
+            + (0.10 * known_malicious_ip_reputation_score)
+        )
+
+    def evaluate_security_event_context_for_adaptive_response(
+        self,
+        event: SecurityEventContextEnvelope,
+        *,
+        failed_authentication_event_counter_within_observation_window: int,
+    ) -> ProgressiveAdaptiveMitigationDecision:
+        geo_velocity_anomaly_probability_score = self._random.uniform(0.20, 0.97)
+        impossible_travel_detection_confidence_percentage = self._random.uniform(
+            30.0, 99.9
+        )
+        known_malicious_ip_reputation_score = self._random.uniform(0.0, 1.0)
+
+        composite_risk_signal_score = self._calculate_composite_risk_signal_score(
+            failed_authentication_event_counter_within_observation_window=
+            failed_authentication_event_counter_within_observation_window,
+            geo_velocity_anomaly_probability_score=
+            geo_velocity_anomaly_probability_score,
+            impossible_travel_detection_confidence_percentage=
+            impossible_travel_detection_confidence_percentage,
+            known_malicious_ip_reputation_score=
+            known_malicious_ip_reputation_score,
+        )
+
+        decision_identifier = (
+            "cross_tenant_authentication_anomaly_response_decision_"
+            f"{event.event_timestamp_utc.strftime('%Y%m%dT%H%M%SZ')}_"
+            f"{event.tenant_identifier}_{event.principal_identifier}"
+        )
+
+        rationale = self._derive_human_readable_rationale_with_long_identifiers(
+            failed_authentication_event_counter_within_observation_window=
+            failed_authentication_event_counter_within_observation_window,
+            geo_velocity_anomaly_probability_score=
+            geo_velocity_anomaly_probability_score,
+            impossible_travel_detection_confidence_percentage=
+            impossible_travel_detection_confidence_percentage,
+            known_malicious_ip_reputation_score=
+            known_malicious_ip_reputation_score,
+        )
+
+        if (
+            failed_authentication_event_counter_within_observation_window
+            >= self.unsuccessful_authentication_attempt_critical_threshold
+            or composite_risk_signal_score >= 0.86
+        ):
+            return ProgressiveAdaptiveMitigationDecision(
+                decision_identifier=decision_identifier,
+                severity=IncidentSeverityClassification.CRITICAL,
+                should_force_session_invalidation=True,
+                should_require_step_up_authentication=True,
+                should_enable_tenant_scoped_rate_limiting=True,
+                rationale=rationale,
+            )
+
+        if (
+            failed_authentication_event_counter_within_observation_window
+            >= self.unsuccessful_authentication_attempt_high_threshold
+            or composite_risk_signal_score >= 0.70
+        ):
+            return ProgressiveAdaptiveMitigationDecision(
+                decision_identifier=decision_identifier,
+                severity=IncidentSeverityClassification.HIGH,
+                should_force_session_invalidation=True,
+                should_require_step_up_authentication=True,
+                should_enable_tenant_scoped_rate_limiting=False,
+                rationale=rationale,
+            )
+
+        if (
+            failed_authentication_event_counter_within_observation_window
+            >= self.unsuccessful_authentication_attempt_medium_threshold
+            or composite_risk_signal_score >= 0.50
+        ):
+            return ProgressiveAdaptiveMitigationDecision(
+                decision_identifier=decision_identifier,
+                severity=IncidentSeverityClassification.MEDIUM,
+                should_force_session_invalidation=False,
+                should_require_step_up_authentication=True,
+                should_enable_tenant_scoped_rate_limiting=False,
+                rationale=rationale,
+            )
+
+        return ProgressiveAdaptiveMitigationDecision(
+            decision_identifier=decision_identifier,
+            severity=IncidentSeverityClassification.LOW,
+            should_force_session_invalidation=False,
+            should_require_step_up_authentication=False,
+            should_enable_tenant_scoped_rate_limiting=False,
+            rationale=rationale,
+        )
+
+
+def generate_realistic_security_event_context_envelopes_for_report_rendering_stress_test(
+    *,
+    base_datetime_utc: datetime,
+    number_of_events_to_generate: int,
+) -> list[SecurityEventContextEnvelope]:
+    generated_events: list[SecurityEventContextEnvelope] = []
+    for event_index in range(number_of_events_to_generate):
+        tenant_identifier = f"tenant_eu_west_primary_{(event_index % 4) + 1}"
+        source_network_address = f"203.0.113.{(event_index % 200) + 1}"
+        principal_identifier = (
+            "employee_identity_record_"
+            f"{100000 + event_index}_high_privilege_support_engineer"
+        )
+        event_name = (
+            "SuspiciousCredentialReplayAttemptObservedAcrossMultipleTenantBoundaries"
+            if event_index % 3 == 0
+            else "HighRiskAuthenticationWorkflowTriggeredFromAnomalousGeolocation"
+        )
+        event_timestamp_utc = base_datetime_utc + timedelta(minutes=event_index * 7)
+        distributed_correlation_identifier = (
+            "distributed_incident_response_state_synchronisation_checkpoint_"
+            f"identifier_namespace_v2_event_{event_index:04d}"
+        )
+
+        event = SecurityEventContextEnvelope(
+            tenant_identifier=tenant_identifier,
+            source_network_address=source_network_address,
+            principal_identifier=principal_identifier,
+            event_name=event_name,
+            event_timestamp_utc=event_timestamp_utc,
+            distributed_correlation_identifier=distributed_correlation_identifier,
+            risk_signal_attributes={
+                "geo_velocity_anomaly_probability_score": round(
+                    0.15 + ((event_index % 9) * 0.09), 4
+                ),
+                "known_malicious_ip_reputation_score": round(
+                    0.05 + ((event_index % 7) * 0.11), 4
+                ),
+                "device_fingerprint_reuse_indicator":
+                    "cross_region_device_fingerprint_reuse_detected"
+                    if event_index % 5 == 0
+                    else "unique_device_fingerprint_observed",
+                "authentication_protocol_identifier":
+                    "OpenIDConnectAuthorizationCodeFlowWithPkceAndStepUpMfa",
+            },
+        )
+        generated_events.append(event)
+    return generated_events
+
+
+def tabular_like_markdown_summary_for_decisions(
+    decisions: Iterable[ProgressiveAdaptiveMitigationDecision],
+) -> str:
+    header = (
+        "| decision_identifier | severity | force_session_invalidation | "
+        "require_step_up_authentication | enable_tenant_scoped_rate_limiting |\n"
+        "| :------------------ | :------- | :------------------------- | "
+        ":----------------------------- | :--------------------------------- |"
+    )
+
+    rows = []
+    for decision in decisions:
+        row = (
+            f"| {decision.decision_identifier} | {decision.severity.value} | "
+            f"{decision.should_force_session_invalidation} | "
+            f"{decision.should_require_step_up_authentication} | "
+            f"{decision.should_enable_tenant_scoped_rate_limiting} |"
+        )
+        rows.append(row)
+
+    return "\n".join([header, *rows])
+
+
+def serialize_event_and_decision_pair_for_debugging_output(
+    event: SecurityEventContextEnvelope,
+    decision: ProgressiveAdaptiveMitigationDecision,
+) -> str:
+    payload = {
+        "event": {
+            "tenant_identifier": event.tenant_identifier,
+            "source_network_address": event.source_network_address,
+            "principal_identifier": event.principal_identifier,
+            "event_name": event.event_name,
+            "event_timestamp_utc": event.event_timestamp_utc.isoformat(),
+            "distributed_correlation_identifier": event.distributed_correlation_identifier,
+            "deterministic_event_checksum_sha256": event.deterministic_event_checksum_sha256(),
+            "risk_signal_attributes": event.risk_signal_attributes,
+        },
+        "decision": {
+            "decision_identifier": decision.decision_identifier,
+            "severity": decision.severity.value,
+            "should_force_session_invalidation": decision.should_force_session_invalidation,
+            "should_require_step_up_authentication": decision.should_require_step_up_authentication,
+            "should_enable_tenant_scoped_rate_limiting": decision.should_enable_tenant_scoped_rate_limiting,
+            "rationale": decision.rationale,
+        },
+    }
+    return dumps(payload, indent=2, sort_keys=True)
+
+
+def main() -> None:
+    coordinator = BehaviouralAnomalyCorrelationAndMitigationOrchestrationCoordinator(
+        unsuccessful_authentication_attempt_critical_threshold=34,
+        unsuccessful_authentication_attempt_high_threshold=19,
+        unsuccessful_authentication_attempt_medium_threshold=9,
+        pseudo_random_seed_for_reproducible_test_output=424242,
+    )
+
+    events = generate_realistic_security_event_context_envelopes_for_report_rendering_stress_test(
+        base_datetime_utc=datetime(2026, 6, 11, 9, 0, 0, tzinfo=UTC),
+        number_of_events_to_generate=18,
+    )
+
+    decisions: list[ProgressiveAdaptiveMitigationDecision] = []
+    for index, event in enumerate(events):
+        failed_authentication_event_counter_within_observation_window = 5 + (index * 2)
+        decision = coordinator.evaluate_security_event_context_for_adaptive_response(
+            event,
+            failed_authentication_event_counter_within_observation_window=
+            failed_authentication_event_counter_within_observation_window,
+        )
+        decisions.append(decision)
+
+    print("# Decision Summary (Markdown Table)")
+    print(tabular_like_markdown_summary_for_decisions(decisions))
+    print("\n# Example Event + Decision Debug Payloads")
+    for pair_index, (event, decision) in enumerate(zip(events[:3], decisions[:3], strict=True)):
+        print(f"\n## Pair {pair_index + 1}")
+        print(serialize_event_and_decision_pair_for_debugging_output(event, decision))
+
+
+if __name__ == "__main__":
+    main()
+```
+{%- endblock recommendation %}
+
+
+{% block reference -%}
+{%- endblock reference %}
