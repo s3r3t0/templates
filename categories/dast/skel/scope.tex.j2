@@ -66,10 +66,16 @@ The target has the following defenses in place:
     Target exposure to the Internet & ((( target.data.exposure | capitalize ))) \\
   ((*- endif *))
   Access to target protected by \ac{ip} whitelist & ((( target.data.ip_filtering | yesno("Yes,No") ))) \\
-  Tester's \ac{ip} whitelisted & ((( target.data.ip_allowed | yesno("Yes,No") ))) \\
+  ((*- if target.data.ip_filtering -*))
+    Tester's \ac{ip} allowed to access target & ((( target.data.ip_allowed | yesno("Yes,No") ))) \\
+  ((*- endif *))
   Request input filtered by \ac{waf} & ((( target.data.waf_present | yesno("Yes,No") ))) \\
-  Tester's \ac{ip} whitelisted & ((( target.data.waf_whitelisted | yesno("Yes,No") ))) \\
+  ((*- if target.data.waf_present -*))
+    Tester's \ac{ip} allowed to bypass \ac{waf} filters & ((( target.data.waf_whitelisted | yesno("Yes,No") ))) \\
+  ((*- endif *))
   Access to target protected by authentication & ((( target.data.authentication | yesno("Yes,No") ))) \\
-  Credentials provided & ((( target.data.credentials_provided | yesno("Yes,No") ))) \\
+  ((*- if target.data.authentication -*))
+    Credentials provided & ((( target.data.credentials_provided | yesno("Yes,No") ))) \\
+  ((*- endif *))
   \bottomrule
 \end{longtable}
