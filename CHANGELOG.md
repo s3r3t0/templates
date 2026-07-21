@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Renamed example finding "Test Finding" to "Example Finding" to properly reflect its purpose as syntax reference.
 - Finding groups now use the new `suggested_name` property instead of the simple `name` property.
 - DAST category: Show target protection bypass questions only when the protections are in place.
+- Due date calculation now takes into account the `exposure` field in scope for DAST category.
 
 ### Removed
 
