@@ -10,7 +10,7 @@
     locators_title="Location",
     details = {
       "Platform": "Android/iOS",
-      "Recommended Due Date": config.due_date(finding_group.risk, finding_group.reported_on)
+      "Recommended Due Date": config.due_date(finding_group.risk, reported_on=finding_group.reported_on)
     },
   ) )))
 \end{tcolorbox}
