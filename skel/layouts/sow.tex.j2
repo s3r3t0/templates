@@ -73,6 +73,7 @@
   \setcounter{secnumdepth}{\tocdepth}
 
   ((*- for target in c.targets *))
+    ((* set api = target.filter_documents("api") | length > 0 *))
     \chapter{((( target.data.name | tex )))}
     \label{((( target.uname )))}
 
