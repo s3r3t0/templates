@@ -4,13 +4,9 @@
 #
 #    pip-compile --generate-hashes --output-file=requirements-tox.txt --strip-extras requirements.in
 #
-cachetools==7.0.1 \
-    --hash=sha256:8f086515c254d5664ae2146d14fc7f65c9a4bce75152eb247e5a9c5e6d7b2ecf \
-    --hash=sha256:e31e579d2c5b6e2944177a0397150d312888ddf4e16e12f1016068f0c03b8341
-    # via tox
-chardet==5.2.0 \
-    --hash=sha256:1b3b6ff479a8c414bc3fa2c0852995695c4a026dcd6d0633b2dd092ca39c1cf7 \
-    --hash=sha256:e1cf59446890a00105fe7b7912492ea04b6e6f06d4b742b2c788469e34c82970
+cachetools==7.2.4 \
+    --hash=sha256:4cfbebf3eec4040d2073b19c460511ad47eef7b852dbf9a0d385099b4dafa31e \
+    --hash=sha256:e0203b04b75fe13e62098eeb5b2018c4eb1a14c04e2b5b450e70db3ee7e92ec5
     # via tox
 colorama==0.4.6 \
     --hash=sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44 \
@@ -20,9 +16,9 @@ distlib==0.4.4 \
     --hash=sha256:ca4175b4ac7f71223cc30ed7248c45d2b38c2439d8ee6e498ab67ed63cf3508d \
     --hash=sha256:cf09d55b1e85a89576b036aeb71550bfd68320f3f21761ca329eadadad918638
     # via virtualenv
-filelock==3.24.2 \
-    --hash=sha256:667d7dc0b7d1e1064dd5f8f8e80bdac157a6482e8d2e02cd16fd3b6b33bd6556 \
-    --hash=sha256:c22803117490f156e59fafce621f0550a7a853e2bbf4f87f112b11d469b6c81b
+filelock==4.2.4 \
+    --hash=sha256:301241438c57936ef93f4243a94f2559022268bfcf9b375a9a72eb0f8db8358e \
+    --hash=sha256:c6d8663535e1650ee430507b4ffbac7b464dd64b7647ea0112a9f406499d163d
     # via
     #   python-discovery
     #   tox
@@ -34,9 +30,9 @@ packaging==26.3 \
     #   pyproject-api
     #   tox
     #   virtualenv
-platformdirs==4.9.2 \
-    --hash=sha256:9170634f126f8efdae22fb58ae8a0eaa86f38365bc57897a6c4f781d1f5875bd \
-    --hash=sha256:9a33809944b9db043ad67ca0db94b14bf452cc6aeaac46a88ea55b26e2e9d291
+platformdirs==4.13.5 \
+    --hash=sha256:05831adf87d392760f4b5c3a0a95579ab5a10b18b9b9bd43680dcb47544788a0 \
+    --hash=sha256:53d3ec4280b815c1e0b02edad7f9ee8fda1ba9c0865dd9c2e6e63849ce82fc1e
     # via
     #   tox
     #   virtualenv
@@ -51,14 +47,20 @@ pyproject-api==1.10.0 \
 python-discovery==1.6.1 \
     --hash=sha256:cf87d3627dfb4412437fdd5b13eae402607722998d21567993aedbc59b23c15e \
     --hash=sha256:d43fcdef879fe795352bd13ccf8d185ba5a9f86f36cfcd00529f596e737442b3
-    # via virtualenv
-tox==4.36.1 \
-    --hash=sha256:085ddf2e6ebd2a5be04ae8f4a2c6422a7994a4702b3c187edc4e99f1e7ccdc2a \
-    --hash=sha256:1a26afa08ff0a527e2055959c99907058328aaa5134fcea07ad2ae1dbce1a09a
+    # via
+    #   tox
+    #   virtualenv
+tomli-w==1.2.0 \
+    --hash=sha256:188306098d013b691fcadc011abd66727d3c414c571bb01b1a174ba8c983cf90 \
+    --hash=sha256:2dd14fac5a47c27be9cd4c976af5a12d87fb1f0b4512f81d69cce3b35ae25021
+    # via tox
+tox==4.67.1 \
+    --hash=sha256:23d614cb703e1f7bd39e00c046d4c261b63fb9986e185134c6be2f93531d9726 \
+    --hash=sha256:a68602f64421b199016127364ee47347b958391d19c2b2e53fe95673a8fe98e9
     # via tox-gh
-tox-gh==1.8.0 \
-    --hash=sha256:19c151525e6ed383b2fd23f8f3a35301ee12f3438c19ac7062f81c30958626ad \
-    --hash=sha256:c29a109dc4c1a51bc472b4989bd7063ac9be07bf0c16a2b0fcbe57f16757e397
+tox-gh==1.9.0 \
+    --hash=sha256:8fea2f93d6b5b8757580bd1e02222e8032254366ea3fa16e3a801f96c01b15f9 \
+    --hash=sha256:9bb052cd7372a9262aee8f83352eefd291698e337f8a0645ceb4b930ab78a798
     # via -r requirements.in
 virtualenv==21.14.9 \
     --hash=sha256:4d1bee354cd81c820da3bee56e38be3426490f8d1fc54e10ea5b2072ebad8ef8 \
