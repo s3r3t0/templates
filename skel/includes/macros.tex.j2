@@ -6,7 +6,7 @@
     \endhead
     ((* for finding_group in target.findings.groups -*))
       ((( loop.index ))) & %
-        \hyperref[ (((- target.uname + "_" + finding_group.uname -))) ]{ (((- finding_group.suggested_name | tex -))) } & %
+        \hyperref[ (((- target.data.id + "_" + finding_group.uname -))) ]{ (((- finding_group.suggested_name | tex -))) } & %
         ((( finding_group.risk | capitalize | tex ))) & %
       ((( config.due_date(finding_group.risk,
         exposure = target.data.exposure | default('external'),

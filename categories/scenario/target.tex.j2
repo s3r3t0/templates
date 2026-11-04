@@ -1,7 +1,7 @@
 ((* from "macros.tex.j2" import findings_table *))
 
 \chapter{((( target.data.name )))}
-\label{((( target.uname )))}
+\label{((( target.data.id )))}
 
 
 The ((( target.data.name ))) is ((( lipsum(1, False) ))).
@@ -10,11 +10,11 @@ The ((( target.data.name ))) is ((( lipsum(1, False) ))).
 
 The penetration test focused on the following areas: ((( lipsum(1, False) )))
 
-((* include target.uname + "/scope.tex.j2" *))
+((* include target.directory_name + "/scope.tex.j2" *))
 
-((* include target.uname + "/scenario.tex.j2" *))
+((* include target.directory_name + "/scenario.tex.j2" *))
 
-((* include target.uname + "/approach.tex.j2" *))
+((* include target.directory_name + "/approach.tex.j2" *))
 
 \section{Findings}
 
@@ -22,7 +22,7 @@ The penetration test focused on the following areas: ((( lipsum(1, False) )))
   During the penetration test of the ((( target.data.name ))) target, we discovered ((( target.findings.risks.sum_open ))) ((* if target.findings.risks.sum_open > 1 -*)) vulnerabilities ((*- else -*)) vulnerability ((*- endif *)).
 
   \begin{center}
-    \includegraphics[width=\textwidth]{((( project_path.as_posix() )))/.build/((( target.uname )))/risks.png}
+    \includegraphics[width=\textwidth]{((( project_path.as_posix() )))/.build/((( target.directory_name )))/risks.png}
   \end{center}
 
   The table below gives an overview of the vulnerabilities and the risk classification.
@@ -33,7 +33,7 @@ The penetration test focused on the following areas: ((( lipsum(1, False) )))
 
   ((* for finding_group in target.findings.groups -*))
     \clearpage
-    ((* include target.uname + "_" + finding_group.uname + ".tex.j2" *))
+    ((* include target.directory_name + "_" + finding_group.uname + ".tex.j2" *))
   ((* endfor -*))
 ((* else *))
   During the penetration test of the ((( target.data.name ))) target, we were not able to locate any vulnerability within the scope of the assessment.
