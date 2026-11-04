@@ -34,7 +34,7 @@
   ((* if c.targets | length *))
     \begin{itemize}
     ((* for t in c.targets *))
-      \item ((( t.data.category | upper | tex ))) test of the \hyperref[((( t.uname )))]{((( t.data.name | tex )))} target
+      \item ((( t.data.category | upper | tex ))) test of the \hyperref[((( t.data.id )))]{((( t.data.name | tex )))} target
       ((* if t.data.id -*))
         ( (((- t.data.id | tex -))) )
       ((*- endif *))
@@ -75,15 +75,15 @@
   ((*- for target in c.targets *))
     ((* set api = target.filter_documents("api") | length > 0 *))
     \chapter{((( target.data.name | tex )))}
-    \label{((( target.uname )))}
+    \label{((( target.data.id )))}
 
     \section{Assigment}
 
     This section describes the details of the assignment for the ((( target.data.name | tex ))) target.
 
-    ((* include target.uname + "/scope.tex.j2" *))
+    ((* include target.directory_name + "/scope.tex.j2" *))
 
-    ((* include target.uname + "/approach.tex.j2" *))
+    ((* include target.directory_name + "/approach.tex.j2" *))
 
   ((* endfor -*))
 ((* endblock content *))
