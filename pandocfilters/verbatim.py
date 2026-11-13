@@ -34,6 +34,14 @@ def verbatim(elem: pf.Element, doc: pf.Doc) -> list[pf.RawBlock] | list[pf.RawIn
     Args:
         elem    pandoc element
         doc     pandoc document
+
+    Returns:
+        list[pf.RawBlock]: A single highlighted LaTeX raw block when `elem` is a
+            ``pf.CodeBlock`` and output format is LaTeX.
+        list[pf.RawInline]: A single LaTeX raw inline verbatim element when `elem`
+            is ``pf.Code`` and output format is LaTeX.
+        None: If output format is not LaTeX or `elem` is not a supported code
+            element.
     """
     if doc.format != "latex":
         return None
