@@ -43,7 +43,15 @@ def verbatim(elem: pf.Element, doc: pf.Doc) -> list[pf.RawBlock] | list[pf.RawIn
         text = highlight_code(elem.text, language)
         return [pf.RawBlock(text=text, format="latex")]
     elif isinstance(elem, pf.Code):
-        text = r"\Verb|" + elem.text + r"|"
+        delimiters = ["|", "/", "!", "+", ";", ":", "~", "#", "@", "%", "^", "&", "*", "-", "_", "="]
+        delimiter = next((d for d in delimiters if d not in elem.text), None)
+        if delimiter is None:
+            # Fallback: keep command syntactically valid even for pathological input.
+            delimiter = "|"
+            inline_text = elem.text.replace("|", r"\|")
+        else:
+            inline_text = elem.text
+        text = rf"\Verb{delimiter}{inline_text}{delimiter}"
         return [pf.RawInline(text=text, format="latex")]
 
     return None
