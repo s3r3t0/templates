@@ -18,6 +18,9 @@ def highlight_code(code: str, language: str) -> str:
     Args:
         code      source code to highlight
         language  programming language of the source code
+
+    Returns:
+        A string containing LaTeX-formatted highlighted code.
     """
     try:
         lexer = get_lexer_by_name(language, stripall=True)
@@ -34,6 +37,14 @@ def verbatim(elem: pf.Element, doc: pf.Doc) -> list[pf.RawBlock] | list[pf.RawIn
     Args:
         elem    pandoc element
         doc     pandoc document
+
+    Returns:
+        list[pf.RawBlock]: A single highlighted LaTeX raw block when `elem` is a
+            ``pf.CodeBlock`` and output format is LaTeX.
+        list[pf.RawInline]: A single LaTeX raw inline verbatim element when `elem`
+            is ``pf.Code`` and output format is LaTeX.
+        None: If output format is not LaTeX or `elem` is not a supported code
+            element.
     """
     if doc.format != "latex":
         return None
@@ -43,7 +54,15 @@ def verbatim(elem: pf.Element, doc: pf.Doc) -> list[pf.RawBlock] | list[pf.RawIn
         text = highlight_code(elem.text, language)
         return [pf.RawBlock(text=text, format="latex")]
     elif isinstance(elem, pf.Code):
-        text = r"\Verb|" + elem.text + r"|"
+        delimiters = ["|", "/", "!", "+", ";", ":", "~", "#", "@", "%", "^", "&", "*", "-", "_", "="]
+        delimiter = next((d for d in delimiters if d not in elem.text), None)
+        if delimiter is None:
+            # Fallback: keep command syntactically valid even for pathological input.
+            delimiter = "|"
+            inline_text = elem.text.replace("|", r"\|")
+        else:
+            inline_text = elem.text
+        text = rf"\Verb{delimiter}{inline_text}{delimiter}"
         return [pf.RawInline(text=text, format="latex")]
 
     return None
