@@ -18,6 +18,9 @@ def highlight_code(code: str, language: str) -> str:
     Args:
         code      source code to highlight
         language  programming language of the source code
+
+    Returns:
+        A string containing LaTeX-formatted highlighted code.
     """
     try:
         lexer = get_lexer_by_name(language, stripall=True)
