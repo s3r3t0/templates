@@ -136,7 +136,7 @@ Layout and target templates (`.tex.j2`) use **custom Jinja2 delimiters** to avoi
 | Expressions | `((( ... )))` | `((( target.data.name \| tex )))` |
 | Comments | `((= ... =))` | `((= Scope =))` |
 | Extends | `((* extends "_base.tex.j2" *))` | |
-| Include | `((* include target.uname + "/scope.tex.j2" *))` | |
+| Include | `((* include target.directory_name + "/scope.tex.j2" *))` | |
 
 > **Do not** use standard `{% %}` / `{{ }}` Jinja2 in `.tex.j2` files — they will conflict with LaTeX syntax.
 
